@@ -39,7 +39,7 @@
       </div>
       <div class="job-type">Full Time</div>
       <div class="tech-stack">technology: something crispy</div>
-      <div class="job-description">
+      <div class="content-description">
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores ipsum
         tempora possimus ut ullam debitis quam eligendi molestias tempore!
         Vitae, fuga facilis veritatis sed reiciendis eum aliquam beatae aliquid
@@ -52,7 +52,7 @@
       </div>
       <div class="job-type">Full Time</div>
       <div class="tech-stack">technology: something crispy</div>
-      <div class="job-description">
+      <div class="content-description">
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores ipsum
         tempora possimus ut ullam debitis quam eligendi molestias tempore!
         Vitae, fuga facilis veritatis sed reiciendis eum aliquam beatae aliquid
@@ -63,6 +63,34 @@
   </div>
   <div class="projects">
     <div class="resume-heading">Projects</div>
+    <div style="display: flex;justify-content: space-between;">
+        <div class="project-name" style="order: 1;">ProjectName</div>
+        <div class="project-date" style="order: 2;">Date</div>
+    </div>
+    <div class="tech-stack">technology: something crispy</div>
+    <div class="content-description">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores ipsum
+        tempora possimus ut ullam debitis quam eligendi molestias tempore!
+        Vitae, fuga facilis veritatis sed reiciendis eum aliquam beatae aliquid
+        ullam.
+      </div>
+  </div>
+  <div class="education">
+    <div class="resume-heading">
+        Education
+    </div>
+        <div class="education-level">
+            Bachlores
+        </div>
+    <div class="school-name">random school name</div>
+    <!-- change school name to something better many css classes are hardcoded -->
+    <div class="school-name">random place name</div>
+        <div class="education-level">
+            Masters
+        </div>
+    <div class="school-name">random school name</div>
+    <!-- change school name to something better many css classes are hardcoded -->
+    <div class="school-name">random place name</div>
   </div>
 </div>
 
@@ -132,7 +160,6 @@
   .date {
     color: black;
     margin: 5px 8px 0px 1pc;
-    float: right;
   }
   .job-type {
     color: black;
@@ -145,8 +172,28 @@
     color: black;
     font-weight: bolder;
   }
-  .job-description {
+  .content-description {
     margin: 3px 10px 0px 1.3pc;
     color: black;
   }
+
+  .project-name {
+    margin: 3px 8px 0px 1pc;
+    color: black;
+  }
+  .project-date {
+    margin: 5px 8px 0px 1pc;
+    color: black;
+  }
+
+  .education-level {
+    color: black;
+    margin: 5px 8px 0px 1pc;
+  }
+  .school-name {
+    color: black;
+    margin: -3px 8px 0px 1pc;
+  }
+
+
 </style>
