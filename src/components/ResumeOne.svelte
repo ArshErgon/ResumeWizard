@@ -8,35 +8,62 @@
   </div>
   <div class="social-container">
     <span class="socials" contenteditable="true">
-    will this workwill this workwill this workwill this workwill this
-      work will this workwill this workwill this work will this workwill this
-      work will this work will this work
-      </span
-    >
+      will this workwill this workwill this workwill this workwill this work
+      will this workwill this workwill this work will this workwill this work
+      will this work will this work
+    </span>
   </div>
   <div class="summary">
     <div class="resume-heading">Summary</div>
     <div class="summary-content" contenteditable="true">
-        this will be the summary site of the page chatgpt will help us alot of the problem we will be facing in the future of the world
+      this will be the summary site of the page chatgpt will help us alot of the
+      problem we will be facing in the future of the world
     </div>
   </div>
-  
+
   <div class="skills">
-      <div class="resume-heading">Skills</div>
-      <div class="skill-lists" id="skills" contenteditable="true">Python * Java * JavaScript * Rust * HTML</div>
+    <div class="resume-heading">Skills</div>
+    <div class="skill-lists" id="skills" contenteditable="true">
+      Python * Java * JavaScript * Rust * HTML
+    </div>
   </div>
 
   <div class="work-experience">
+
     <div class="resume-heading">Work Experience</div>
     <!-- job title one -->
     <div class="title-one">
-        <div style="display: flex;">
-            <div class="job-title">Programmer</div>
-            <div class="date">Jan to Dec</div>
-        </div>
-    </div>    
-  </div>
+      <div style="display: flex;justify-content: space-between;">
+        <div class="job-title" style="order: 1;">Programmer</div>
+        <div class="date" style="order: 2;">Jan to Dec</div>
+      </div>
+      <div class="job-type">Full Time</div>
+      <div class="tech-stack">technology: something crispy</div>
+      <div class="job-description">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores ipsum
+        tempora possimus ut ullam debitis quam eligendi molestias tempore!
+        Vitae, fuga facilis veritatis sed reiciendis eum aliquam beatae aliquid
+        ullam.
+      </div>
 
+      <div style="display: flex;justify-content: space-between;">
+        <div class="job-title" style="order: 1;">Programmer</div>
+        <div class="date" style="order: 2;">Jan to Dec</div>
+      </div>
+      <div class="job-type">Full Time</div>
+      <div class="tech-stack">technology: something crispy</div>
+      <div class="job-description">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores ipsum
+        tempora possimus ut ullam debitis quam eligendi molestias tempore!
+        Vitae, fuga facilis veritatis sed reiciendis eum aliquam beatae aliquid
+        ullam.
+      </div>
+
+    </div>
+  </div>
+  <div class="projects">
+    <div class="resume-heading">Projects</div>
+  </div>
 </div>
 
 <style>
@@ -94,17 +121,32 @@
     color: black;
   }
 
-.work-experience {
+  .work-experience {
     background: orangered;
-}
+  }
 
-.job-title {
+  .job-title {
     margin: 5px 8px 0px 1pc;
     color: black;
-}
-.date {
+  }
+  .date {
     color: black;
     margin: 5px 8px 0px 1pc;
-}
-
+    float: right;
+  }
+  .job-type {
+    color: black;
+    margin: 3px 8px 0px 1pc;
+    font-size: small;
+  }
+  .tech-stack {
+    margin: 3px 8px 0px 1pc;
+    font-size: 15px;
+    color: black;
+    font-weight: bolder;
+  }
+  .job-description {
+    margin: 3px 10px 0px 1.3pc;
+    color: black;
+  }
 </style>
