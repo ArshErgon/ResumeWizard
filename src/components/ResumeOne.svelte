@@ -2,12 +2,12 @@
 </script>
 
 <div class="container-fluid">
-  <div class="top-name" contenteditable="true">
+  <div class="top-name">
     <p>John Bose</p>
     <br />
   </div>
   <div class="social-container">
-    <span class="socials" contenteditable="true">
+    <span class="socials">
       will this workwill this workwill this workwill this workwill this work
       will this workwill this workwill this work will this workwill this work
       will this work will this work
@@ -15,7 +15,7 @@
   </div>
   <div class="summary">
     <div class="resume-heading">Summary</div>
-    <div class="description" contenteditable="true">
+    <div class="description">
       this will be the summary site of the page chatgpt will help us alot of the
       problem we will be facing in the future of the world
     </div>
@@ -23,13 +23,12 @@
 
   <div class="skills">
     <div class="resume-heading">Skills</div>
-    <div class="description" id="skills" contenteditable="true">
+    <div class="description" id="skills">
       Python * Java * JavaScript * Rust * HTML
     </div>
   </div>
 
   <div class="work-experience">
-
     <div class="resume-heading">Work Experience</div>
     <!-- job title one -->
     <div class="title-one">
@@ -58,36 +57,29 @@
         Vitae, fuga facilis veritatis sed reiciendis eum aliquam beatae aliquid
         ullam.
       </div>
-
     </div>
   </div>
   <div class="projects">
     <div class="resume-heading">Projects</div>
     <div style="display: flex;justify-content: space-between;">
-        <div class="project-name" style="order: 1;">ProjectName</div>
-        <div class="date" style="order: 2;">Date</div>
+      <div class="project-name" style="order: 1;">ProjectName</div>
+      <div class="date" style="order: 2;">Date</div>
     </div>
     <div class="tech-stack">technology: something crispy</div>
     <div class="description">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores ipsum
-        tempora possimus ut ullam debitis quam eligendi molestias tempore!
-        Vitae, fuga facilis veritatis sed reiciendis eum aliquam beatae aliquid
-        ullam.
-      </div>
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores ipsum
+      tempora possimus ut ullam debitis quam eligendi molestias tempore! Vitae,
+      fuga facilis veritatis sed reiciendis eum aliquam beatae aliquid ullam.
+    </div>
   </div>
   <div class="education">
-    <div class="resume-heading">
-        Education
+    <div class="resume-heading">Education</div>
+    <div class="education-level">Bachlores</div>
+    <div class="education-right">
+      <div class="school-name">random school name</div>
+      <div class="school-name">random place name</div>
     </div>
-        <div class="education-level">
-            Bachlores
-        </div>
-    <div class="school-name">random school name</div>
-    <!-- change school name to something better many css classes are hardcoded -->
-    <div class="school-name">random place name</div>
-        <div class="education-level">
-            Masters
-        </div>
+    <div class="education-level">Masters</div>
     <div class="school-name">random school name</div>
     <!-- change school name to something better many css classes are hardcoded -->
     <div class="school-name">random place name</div>
@@ -98,7 +90,6 @@
   .container-fluid {
     width: 95%;
     height: 98%;
-    background-color: rgba(128, 0, 128, 0.432);
     margin: 10px auto;
   }
   .top-name p {
@@ -111,22 +102,19 @@
 
   .summary {
     margin-top: 40px;
-    background: rgba(255, 0, 0, 0.548);
   }
 
   .description {
     color: black;
-    background: orange;
     margin: 3px 10px 0px 1.3pc;
   }
 
   .social-container {
     width: 80%;
-    background: green;
     text-align: center;
     margin: -10px auto;
+    color: #000;
   }
-  
 
   .resume-heading {
     font-size: 1.5rem;
@@ -172,5 +160,7 @@
     margin: -3px 8px 0px 1pc;
   }
 
-
+  .education-right {
+    margin-right: 10px;
+  }
 </style>
