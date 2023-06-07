@@ -15,7 +15,7 @@
   </div>
   <div class="summary">
     <div class="resume-heading">Summary</div>
-    <div class="summary-content" contenteditable="true">
+    <div class="description" contenteditable="true">
       this will be the summary site of the page chatgpt will help us alot of the
       problem we will be facing in the future of the world
     </div>
@@ -23,7 +23,7 @@
 
   <div class="skills">
     <div class="resume-heading">Skills</div>
-    <div class="skill-lists" id="skills" contenteditable="true">
+    <div class="description" id="skills" contenteditable="true">
       Python * Java * JavaScript * Rust * HTML
     </div>
   </div>
@@ -39,7 +39,7 @@
       </div>
       <div class="job-type">Full Time</div>
       <div class="tech-stack">technology: something crispy</div>
-      <div class="content-description">
+      <div class="description">
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores ipsum
         tempora possimus ut ullam debitis quam eligendi molestias tempore!
         Vitae, fuga facilis veritatis sed reiciendis eum aliquam beatae aliquid
@@ -52,7 +52,7 @@
       </div>
       <div class="job-type">Full Time</div>
       <div class="tech-stack">technology: something crispy</div>
-      <div class="content-description">
+      <div class="description">
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores ipsum
         tempora possimus ut ullam debitis quam eligendi molestias tempore!
         Vitae, fuga facilis veritatis sed reiciendis eum aliquam beatae aliquid
@@ -65,10 +65,10 @@
     <div class="resume-heading">Projects</div>
     <div style="display: flex;justify-content: space-between;">
         <div class="project-name" style="order: 1;">ProjectName</div>
-        <div class="project-date" style="order: 2;">Date</div>
+        <div class="date" style="order: 2;">Date</div>
     </div>
     <div class="tech-stack">technology: something crispy</div>
-    <div class="content-description">
+    <div class="description">
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores ipsum
         tempora possimus ut ullam debitis quam eligendi molestias tempore!
         Vitae, fuga facilis veritatis sed reiciendis eum aliquam beatae aliquid
@@ -114,10 +114,10 @@
     background: rgba(255, 0, 0, 0.548);
   }
 
-  .summary-content {
+  .description {
     color: black;
     background: orange;
-    margin: 5px 8px 0px 8px;
+    margin: 3px 10px 0px 1.3pc;
   }
 
   .social-container {
@@ -126,10 +126,7 @@
     text-align: center;
     margin: -10px auto;
   }
-  .socials {
-    text-align: center;
-    align-items: center;
-  }
+  
 
   .resume-heading {
     font-size: 1.5rem;
@@ -138,19 +135,6 @@
     border-bottom: 2px solid black;
     font-family: Cardo;
     margin-top: 15px;
-  }
-
-  .skills {
-    background-color: lightgrey;
-  }
-
-  .skill-lists {
-    margin: 5px 8px 0px 1pc;
-    color: black;
-  }
-
-  .work-experience {
-    background: orangered;
   }
 
   .job-title {
@@ -172,23 +156,16 @@
     color: black;
     font-weight: bolder;
   }
-  .content-description {
-    margin: 3px 10px 0px 1.3pc;
-    color: black;
-  }
 
   .project-name {
     margin: 3px 8px 0px 1pc;
-    color: black;
-  }
-  .project-date {
-    margin: 5px 8px 0px 1pc;
     color: black;
   }
 
   .education-level {
     color: black;
     margin: 5px 8px 0px 1pc;
+    font-weight: bolder;
   }
   .school-name {
     color: black;
