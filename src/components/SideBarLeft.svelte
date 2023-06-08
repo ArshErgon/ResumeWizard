@@ -1,5 +1,6 @@
 <script>
   import { slide } from "svelte/transition";
+  
   let headerOpen = false;
   let summaryOpen = false;
   let skillOpen = false;
@@ -12,6 +13,8 @@
   const toggleWork = () => (workOpen = !workOpen);
   const toggleProject = () => (projectOpen = !projectOpen);
   const toggleEducation = () => (education = !education);
+  let newName = "";
+  $: console.log(": " + newName);
 </script>
 
 <div class="sidebar-left">
@@ -32,7 +35,7 @@
     </button>
     {#if headerOpen}
       <ul transition:slide={{ duration: 300 }}>
-        <li>entry</li>
+        <li>Name:<input type="text" bind:value={newName}></li>
       </ul>
     {/if}
     <button on:click={toggleSummary} aria-expanded={summaryOpen}
