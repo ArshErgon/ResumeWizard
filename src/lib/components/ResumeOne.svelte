@@ -7,10 +7,15 @@
   let summary_description =
     "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus natus iusto alias adipisci? Vel rem corrupti atque, facere laudantium delectus ab! Quia, possimus quibusdam fuga sequi rem perspiciatis quas omnis!";
   let skills = "Rust * Pokemon * extra things";
+  let job_title = "Open Source Developer";
   let job_type = "Full-time";
-  let tech_stack = "technology: CSS HTML Rust";
+  let job_date = "20 Jan";
+  let tech_stack = "CSS HTML Rust";
   let exp_desp =
     "* Some random sentenses which is used by many other guys present in the sentenses";
+    let degree = "bachlores";
+    let uni_name = "random";
+    let place = "place";
 </script>
 
 <div class="flex flex-col w-full lg:flex-row">
@@ -56,14 +61,13 @@
           }}
         />
         </div>
-      </div>
+      
       <div class="collapse bg-base-200 collapse-arrow">
         <input type="checkbox" />
         <div class="collapse-title text-xl font-medium">Summary</div>
         <div class="collapse-content">
-          <label for="Name">Summary description: </label><textarea
+          <label for="Name">Summary description: </label><textarea  class="textarea textarea-primary"
           placeholder={summary_description}
-          class="input input-bordered input-primary w-full max-w-xs"
           rows="5"
           on:input={(event) => {
             if (event.target.value) {
@@ -91,14 +95,106 @@
         </div>
       </div>
       
+      <div class="collapse bg-base-200 collapse-arrow">
+        <input type="checkbox" />
+        <div class="collapse-title text-xl font-medium">Work Experience</div>
+        <div class="collapse-content">
+            <label for="Name">Job Title: </label><input
+          type="text"
+          placeholder={job_title}
+          class="input input-bordered input-primary w-full max-w-xs"
+          on:input={(event) => {
+            if (event.target.value) {
+              job_title = event.target.value;
+            }
+          }}
+        />
+        <br>
+          <label for="Name">Job Type: </label><input
+          type="text"
+          placeholder={job_type}
+          class="input input-bordered input-primary w-full max-w-xs"
+          on:input={(event) => {
+            if (event.target.value) {
+              job_type = event.target.value;
+            }
+          }}
+        />
+        <br>
+          <label for="Name">Tech Stack: </label><input
+          type="text"
+          placeholder={tech_stack}
+          class="input input-bordered input-primary w-full max-w-xs"
+          on:input={(event) => {
+            if (event.target.value) {
+              tech_stack = event.target.value;
+            }
+          }}
+        />
+        <br>
+        <label for="Name">Job Description: </label><textarea class="textarea textarea-primary"
+        placeholder={exp_desp}
+        rows="3"
+        on:input={(event) => {
+          if (event.target.value) {
+            exp_desp = event.target.value;
+          }
+        }}
+      ></textarea>
+      
+        
+        </div>
+      </div>
+
+
+
+      <div class="collapse bg-base-200 collapse-arrow">
+        <input type="checkbox" />
+        <div class="collapse-title text-xl font-medium">Education</div>
+        <div class="collapse-content">
+          <label for="Name">Degree: </label><input
+          type="text"
+          placeholder={degree}
+          class="input input-bordered input-primary w-full max-w-xs"
+          on:input={(event) => {
+            if (event.target.value) {
+                degree = event.target.value;
+            }
+          }}
+        />
+        <br>
+        <label for="Name">University Name: </label><input
+          type="text"
+          placeholder={uni_name}
+          class="input input-bordered input-primary w-full max-w-xs"
+          on:input={(event) => {
+            if (event.target.value) {
+                uni_name = event.target.value;
+            }
+          }}
+        />
+          <br>
+        <label for="Name">Place: </label><input
+          type="text"
+          placeholder={place}
+          class="input input-bordered input-primary w-full max-w-xs"
+          on:input={(event) => {
+            if (event.target.value) {
+                place = event.target.value;
+            }
+          }}
+        />
+        
+        </div>
+      </div>
+
+
+
+      </div>
+
     </div>
     </div>
 
-    <!-- <input type="text" name="" id="" placeholder="{name}"on:input={(event) => {
-            if (event.target.value) {
-              name = event.target.value;
-            }
-          }} /> -->
   </div>
   <div class="divider lg:divider-horizontal" />
   <div
@@ -129,11 +225,11 @@
           class="mt-1"
           style="display: flex; justify-content: space-between;"
         >
-          <div id="title" style="order: 1;">Open Source Developer</div>
-          <div class="mr-4 text-black" style="order: 2;">20 Jan</div>
+          <div id="title" style="order: 1;">{job_title}</div>
+          <div class="mr-4 text-black" style="order: 2;">{job_date}</div>
         </div>
         <div class="text-black ml-5">{job_type}</div>
-        <div class="text-black ml-5" id="tech_stack">{tech_stack}</div>
+        <div class="text-black ml-5" id="tech_stack">Technology: {tech_stack}</div>
         <div class="ml-5 mr-4 text-black">
           {exp_desp}
         </div>
@@ -157,9 +253,9 @@
 
       <div class="">
         <h1>Education</h1>
-        <div id="title">Bachlores</div>
-        <div class="text-black ml-5">University Name</div>
-        <div class="text-black ml-5">Place</div>
+        <div id="title">{degree}</div>
+        <div class="text-black ml-5">{uni_name}</div>
+        <div class="text-black ml-5">{place}</div>
       </div>
     </div>
   </div>
