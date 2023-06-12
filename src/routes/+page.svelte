@@ -1,9 +1,8 @@
-<script lang="ts">
-  import A4Sheet from '../components/A4Sheet.svelte';
-  import Footer from '../components/Footer.svelte';
-import Navbar from '../components/Navbar.svelte';
-</script>
 
+<script>
+  import "$lib/global.css";
+  import Navbar from "../lib/components/Navbar.svelte";
+  import ResumeOne from "../lib/components/ResumeOne.svelte";
+</script>
 <Navbar />
-<A4Sheet />
-<Footer />
+<ResumeOne />
