@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* 
+@media print {
+    body {
+        visibility: hidden;
+    }
+}
+ */
+/* 
+
+the above will print only the resume, but its not hiding the accordion 
+
+ */
