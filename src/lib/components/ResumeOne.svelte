@@ -12,20 +12,31 @@
   let job_title = "Open Source Developer";
   let job_type = "Full-time";
   let job_date = "20 Jan";
-  let tech_stack = "CSS HTML Rust";
+  let tech_stack = "CSS * HTML * Rust";
   let exp_desp =
     "* Some random sentenses which is used by many other guys present in the sentenses";
   let degree = "bachlores";
   let uni_name = "random";
   let place = "place";
 
-//   reactive component
+  //   accordion checker
+  let headerAccOpen = false;
+  let nameLen = 0;
+    function toggleHeader() {
+      headerAccOpen = !headerAccOpen;
+    }
+  
+
+  //   reactive component
   $: {
     name = titleCase(name);
     role = titleCase(role);
     skills = replaceAsterisks(skills);
     skills = titleCase(skills);
+    tech_stack = replaceAsterisks(tech_stack);
     summary_description = replaceAsterisks(summary_description);
+    exp_desp = replaceAsterisks(exp_desp);
+    degree = titleCase(degree);
   }
 </script>
 
@@ -36,13 +47,19 @@
   >
     <div class="h-30">
       <div class="collapse bg-base-200 collapse-arrow">
-        <input type="checkbox" />
-        <div class="collapse-title text-xl font-medium">Header</div>
+        <input type="checkbox" bind:checked={headerAccOpen} />
+        <div
+          class="collapse-title text-xl font-medium"
+          on:click={toggleAccordion}
+        >
+          Header
+        </div>
         <div class="collapse-content">
           <label for="Name">Name: </label><input
             type="text"
             placeholder={name}
             class="input input-bordered input-primary w-full max-w-xs"
+            on:click={userName}
             on:input={(event) => {
               if (event.target.value) {
                 name = event.target.value;
@@ -233,7 +250,7 @@
         </div>
         <div class="text-black ml-5">{job_type}</div>
         <div class="text-black ml-5" id="tech_stack">
-          Technology: {tech_stack}
+          <b>Technology:</b> {tech_stack}
         </div>
         <div class="ml-5 mr-4 text-black">
           {exp_desp}
@@ -250,7 +267,7 @@
           <div class="mr-4 text-black" style="order: 2;">20 Jan</div>
         </div>
         <div class="text-black ml-5">{job_type}</div>
-        <div class="text-black ml-5" id="tech_stack">{tech_stack}</div>
+        <div class="text-black ml-5" id="tech_stack"><b>Technology: </b>{tech_stack}</div>
         <div class="ml-5 mr-4 text-black">
           {exp_desp}
         </div>
@@ -269,6 +286,10 @@
     class="grid flex-grow h-32 card bg-base-300 rounded-box place-items-center"
   >
     RightSideBar
+    {#if headerAccOpen}
+      WORK
+      {nameLen}
+    {/if}
 
     <button
       class="btn btn-primary"
