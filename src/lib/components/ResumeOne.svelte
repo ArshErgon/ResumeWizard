@@ -24,6 +24,7 @@
     name = titleCase(name);
     role = titleCase(role);
     skills = replaceAsterisks(skills);
+    skills = titleCase(skills);
     summary_description = replaceAsterisks(summary_description);
   }
 </script>
