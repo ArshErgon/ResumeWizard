@@ -6,12 +6,12 @@
   let header = {
     name: "John Bose",
     role: "Software Developer",
-    social: "github, youtube, linkedin, and more",
+    social: "https:://github.com, , https://www.linkedin.com, and https://example.com",
   };
 
   let summary_description =
     "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus natus iusto alias adipisci? Vel rem corrupti atque, facere laudantium delectus ab! Quia, possimus quibusdam fuga sequi rem perspiciatis quas omnis!";
-  let skills = "Rust • Pokemon • extra things";
+  let skills = "Rust • Python • JavaScript • Svelte";
   let job = {
     title: "",
     type: "",
