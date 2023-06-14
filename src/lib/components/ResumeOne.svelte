@@ -3,6 +3,7 @@
 
   import { titleCase, replaceAsterisks } from "./helper.js";
 
+
   let header = {
     name: "John Bose",
     role: "Software Developer",
@@ -13,12 +14,13 @@
     "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus natus iusto alias adipisci? Vel rem corrupti atque, facere laudantium delectus ab! Quia, possimus quibusdam fuga sequi rem perspiciatis quas omnis!";
   let skills = "Rust * Pokemon * extra things";
   let job = {
-    title: "Open Source Developer",
-    type: "Full Time",
-    date: "20 Jan 2022-Present",
-    tech: "CSS * HTML * Rust",
-    description: "* Some random experience for the user",
+    title: "",
+    type: "",
+    date: "",
+    tech: "",
+    description: "",
   };
+  
   let education = {
     degree: "Bachlores",
     university: "Random Uni",
@@ -45,6 +47,34 @@
     job.description = replaceAsterisks(job.description);
     education.degree = titleCase(education.degree);
   }
+
+  let work_experience_list = [{
+    title: "Open Source Developer",
+    type: "Full Time",
+    date: "20 Jan 2022-Present",
+    tech: "CSS * HTML * Rust",
+    description: "* Some random experience for the user",
+  }];
+  let hasEdit = false;
+  function addMoreExperience() {
+    // Capture the current state of the job object
+    const newJob = { ...job };
+
+    // Add the newJob object to the work_experience_list array
+    work_experience_list.push(newJob);
+    if (!hasEdit) {
+      work_experience_list.pop(0)
+      hasEdit = !hasEdit;
+    }
+    job["title"] = "";
+    job["date"] = "";
+    job["type"] = "";
+    job["tech"] = "";
+    job["description"] = "";
+  }
+
+  $: {console.log(job.description);
+    console.log(work_experience_list)};
 </script>
 
 <div class="flex flex-col w-full lg:flex-row">
@@ -165,16 +195,19 @@
                 }}
               />
               <br />
-              <label for="Name">Job Description: </label><textarea
-                class="textarea textarea-primary"
+              <label for="Name">Job Description: </label><input
+              type="text"
+              class="input input-bordered input-primary w-full max-w-xs"
                 placeholder={job.description}
-                rows="3"
                 on:input={(event) => {
                   if (event.target.value) {
                     job.description = event.target.value;
                   }
                 }}
               />
+              <button class="btn btn-primary" on:click={addMoreExperience}
+                >Add More Experience</button
+              >
             </div>
           </div>
 
@@ -247,21 +280,23 @@
 
       <div class="" id="work_experience">
         <h1>Work Experience</h1>
+        {#each work_experience_list as work}
         <div
           class="mt-1"
           style="display: flex; justify-content: space-between;"
         >
-          <div id="title" style="order: 1;">{job.title}</div>
-          <div class="mr-4 text-black" style="order: 2;">{job.date}</div>
+          <div id="title" style="order: 1;">{work.title}</div>
+          <div class="mr-4 text-black" style="order: 2;">{work.date}</div>
         </div>
-        <div class="text-black ml-5">{job.type}</div>
+        <div class="text-black ml-5">{work.type}</div>
         <div class="text-black ml-5" id="tech_stack">
           <b>Technology:</b>
-          {job.tech}
+          {work.tech}
         </div>
         <div class="ml-5 mr-4 text-black">
-          {job.description}
+          {work.description}
         </div>
+        {/each}
       </div>
 
       <div id="projects">
