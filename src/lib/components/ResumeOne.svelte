@@ -5,27 +5,26 @@
 
   let name = "John Bose";
   let role = "Software Developer";
-  let social = "github, youtube, linkedin, and more";
+  let social = "GitHub, YouTube, Linkedin, and more";
   let summary_description =
-    "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus natus iusto alias adipisci? Vel rem corrupti atque, facere laudantium delectus ab! Quia, possimus quibusdam fuga sequi rem perspiciatis quas omnis!";
+    "Effective communicator and team player with a passion for collaboration and achieving shared goals.";
   let skills = "Rust * Pokemon * extra things";
   let job_title = "Open Source Developer";
   let job_type = "Full-time";
   let job_date = "20 Jan";
   let tech_stack = "CSS * HTML * Rust";
   let exp_desp =
-    "* Some random sentenses which is used by many other guys present in the sentenses";
-  let degree = "bachlores";
-  let uni_name = "random";
-  let place = "place";
+    "*Managed client relationships, driving a 20% increase in sales. Provided exceptional customer service, resulting in high satisfaction ratings. Collaborated with cross-functional teams to enhance brand visibility by 15%.";
+  let degree = "Bachelor's";
+  let uni_name = "Academic Institute";
+  let place = "City name";
 
   //   accordion checker
   let headerAccOpen = false;
   let nameLen = 0;
-    function toggleHeader() {
-      headerAccOpen = !headerAccOpen;
-    }
-  
+  function toggleHeader() {
+    headerAccOpen = !headerAccOpen;
+  }
 
   //   reactive component
   $: {
@@ -67,8 +66,7 @@
                 }
               }}
             />
-          <div class="flex flex-col">
-            </div>
+            <div class="flex flex-col" />
             <br />
             <label for="role">Role: </label><input
               type="text"
@@ -80,9 +78,8 @@
                 }
               }}
             />
-          <br />
-          <div class="flex flex-col">
-            </div>
+            <br />
+            <div class="flex flex-col" />
             <label for="role">Socials: </label><input
               type="text"
               placeholder={social}
@@ -93,8 +90,8 @@
                 }
               }}
             />
-                    </div>
           </div>
+        </div>
 
         <div class="collapse bg-base-200 collapse-arrow">
           <input type="checkbox" />
@@ -274,7 +271,8 @@
         </div>
         <div class="text-black ml-5">{job_type}</div>
         <div class="text-black ml-5" id="tech_stack">
-          <b>Technology:</b> {tech_stack}
+          <b>Technology:</b>
+          {tech_stack}
         </div>
         <div class="ml-5 mr-4 text-black">
           {exp_desp}
@@ -291,7 +289,9 @@
           <div class="mr-4 text-black" style="order: 2;">20 Jan</div>
         </div>
         <div class="text-black ml-5">{job_type}</div>
-        <div class="text-black ml-5" id="tech_stack"><b>Technology: </b>{tech_stack}</div>
+        <div class="text-black ml-5" id="tech_stack">
+          <b>Technology: </b>{tech_stack}
+        </div>
         <div class="ml-5 mr-4 text-black">
           {exp_desp}
         </div>
