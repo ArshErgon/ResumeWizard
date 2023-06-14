@@ -6,7 +6,7 @@
   let header = {
     name: "John Bose",
     role: "Software Developer",
-    social: "https:://github.com, , https://www.linkedin.com, and https://example.com",
+    social: "https:://github.com • https://www.linkedin.com • https://example.com",
   };
 
   let summary_description =
@@ -52,6 +52,7 @@
     job.tech = replaceAsterisks(job.tech);
     summary_description = replaceAsterisks(summary_description);
     job.description = replaceAsterisks(job.description);
+    header.social = replaceAsterisks(header.social);
     education.degree = titleCase(education.degree);
   }
 
