@@ -3,47 +3,40 @@
 
   import { titleCase, replaceAsterisks } from "./helper.js";
 
-  let header = {
-    name: "John Bose",
-    role: "Software Developer",
-    social: "github, youtube, linkedin, and more",
-  };
-
+  let name = "John Bose";
+  let role = "Software Developer";
+  let social = "github, youtube, linkedin, and more";
   let summary_description =
     "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus natus iusto alias adipisci? Vel rem corrupti atque, facere laudantium delectus ab! Quia, possimus quibusdam fuga sequi rem perspiciatis quas omnis!";
   let skills = "Rust * Pokemon * extra things";
-  let job = {
-    title: "Open Source Developer",
-    type: "Full Time",
-    date: "20 Jan 2022-Present",
-    tech: "CSS * HTML * Rust",
-    description: "* Some random experience for the user",
-  };
-  let education = {
-    degree: "Bachlores",
-    university: "Random Uni",
-    place: "remote",
-  };
+  let job_title = "Open Source Developer";
+  let job_type = "Full-time";
+  let job_date = "20 Jan";
+  let tech_stack = "CSS * HTML * Rust";
+  let exp_desp =
+    "* Some random sentenses which is used by many other guys present in the sentenses";
+  let degree = "bachlores";
+  let uni_name = "random";
+  let place = "place";
 
   //   accordion checker
   let headerAccOpen = false;
-  function toggleHeader() {
-    headerAccOpen = !headerAccOpen;
-  }
-  function handleFocus() {
-    console.log("WORKING");
-  }
+  let nameLen = 0;
+    function toggleHeader() {
+      headerAccOpen = !headerAccOpen;
+    }
+  
 
-  // reactive component
+  //   reactive component
   $: {
-    header.name = titleCase(header.name);
-    header.role = titleCase(header.role);
+    name = titleCase(name);
+    role = titleCase(role);
     skills = replaceAsterisks(skills);
     skills = titleCase(skills);
-    job.tech = replaceAsterisks(job.tech);
+    tech_stack = replaceAsterisks(tech_stack);
     summary_description = replaceAsterisks(summary_description);
-    job.description = replaceAsterisks(job.description);
-    education.degree = titleCase(education.degree);
+    exp_desp = replaceAsterisks(exp_desp);
+    degree = titleCase(degree);
   }
 </script>
 
@@ -55,74 +48,87 @@
     <div class="h-30">
       <div class="collapse bg-base-200 collapse-arrow">
         <input type="checkbox" bind:checked={headerAccOpen} />
-        <div class="collapse-title text-xl font-medium" on:click={toggleHeader}>
+        <div
+          class="collapse-title text-xl font-medium"
+          on:click={toggleAccordion}
+        >
           Header
         </div>
         <div class="collapse-content">
-          <label for="Name">Name: </label><input
-            type="text"
-            placeholder={header.name}
-            class="input input-bordered input-primary w-full max-w-xs"
-            on:focus={handleFocus}
-            on:input={(event) => {
-              if (event.target.value) {
-                header.name = event.target.value;
-              }
-            }}
-          />
+          <div class="flex flex-col">
+            <label for="Name">Name: </label><input
+              type="text"
+              placeholder={name}
+              class="input input-bordered input-primary w-100"
+              on:click={userName}
+              on:input={(event) => {
+                if (event.target.value) {
+                  name = event.target.value;
+                }
+              }}
+            />
+          <div class="flex flex-col">
+            </div>
+            <br />
+            <label for="role">Role: </label><input
+              type="text"
+              placeholder={role}
+              class="input input-bordered input-primary w-100"
+              on:input={(event) => {
+                if (event.target.value) {
+                  role = event.target.value;
+                }
+              }}
+            />
           <br />
-          <label for="role">Role: </label><input
-            type="text"
-            placeholder={header.role}
-            class="input input-bordered input-primary w-full max-w-xs"
-            on:input={(event) => {
-              if (event.target.value) {
-                header.role = event.target.value;
-              }
-            }}
-          />
-          <br />
-          <label for="role">Socials: </label><input
-            type="text"
-            placeholder={header.social}
-            class="input input-bordered input-primary w-full max-w-xs"
-            on:input={(event) => {
-              if (event.target.value) {
-                header.social = event.target.value;
-              }
-            }}
-          />
-        </div>
+          <div class="flex flex-col">
+            </div>
+            <label for="role">Socials: </label><input
+              type="text"
+              placeholder={social}
+              class="input input-bordered input-primary w-100"
+              on:input={(event) => {
+                if (event.target.value) {
+                  social = event.target.value;
+                }
+              }}
+            />
+                    </div>
+          </div>
 
         <div class="collapse bg-base-200 collapse-arrow">
           <input type="checkbox" />
           <div class="collapse-title text-xl font-medium">Summary</div>
           <div class="collapse-content">
-            <label for="Name">Summary description: </label><textarea
-              class="textarea textarea-primary"
-              placeholder={summary_description}
-              rows="5"
-              on:input={(event) => {
-                if (event.target.value) {
-                  summary_description = event.target.value;
-                }
-              }}
-            />
+            <div class="flex flex-col">
+              <label for="Name">Summary description: </label><textarea
+                class="textarea textarea-primary"
+                placeholder={summary_description}
+                rows="5"
+                on:input={(event) => {
+                  if (event.target.value) {
+                    summary_description = event.target.value;
+                  }
+                }}
+              />
+            </div>
           </div>
           <div class="collapse bg-base-200 collapse-arrow">
             <input type="checkbox" />
             <div class="collapse-title text-xl font-medium">Skills</div>
             <div class="collapse-content">
-              <label for="Name">Skills: </label><input
-                type="text"
-                placeholder={skills}
-                class="input input-bordered input-primary w-full max-w-xs"
-                on:input={(event) => {
-                  if (event.target.value) {
-                    skills = event.target.value;
-                  }
-                }}
-              />
+              <div class="flex flex-col">
+                <label for="Name">Skills: </label><input
+                  type="text"
+                  placeholder={skills}
+                  class="input input-bordered input-primary w-100"
+                  on:input={(event) => {
+                    if (event.target.value) {
+                      skills = event.target.value;
+                    }
+                  }}
+                />
+              </div>
             </div>
           </div>
 
@@ -132,49 +138,57 @@
               Work Experience
             </div>
             <div class="collapse-content">
-              <label for="Name">Job Title: </label><input
-                type="text"
-                placeholder={job.title}
-                class="input input-bordered input-primary w-full max-w-xs"
-                on:input={(event) => {
-                  if (event.target.value) {
-                    job.title = event.target.value;
-                  }
-                }}
-              />
+              <div class="flex flex-col">
+                <label for="Name">Job Title: </label><input
+                  type="text"
+                  placeholder={job_title}
+                  class="input input-bordered input-primary w-100"
+                  on:input={(event) => {
+                    if (event.target.value) {
+                      job_title = event.target.value;
+                    }
+                  }}
+                />
+              </div>
               <br />
-              <label for="Name">Job Type: </label><input
-                type="text"
-                placeholder={job.type}
-                class="input input-bordered input-primary w-full max-w-xs"
-                on:input={(event) => {
-                  if (event.target.value) {
-                    job.type = event.target.value;
-                  }
-                }}
-              />
+              <div class="flex flex-col">
+                <label for="Name">Job Type: </label><input
+                  type="text"
+                  placeholder={job_type}
+                  class="input input-bordered input-primary w-100"
+                  on:input={(event) => {
+                    if (event.target.value) {
+                      job_type = event.target.value;
+                    }
+                  }}
+                />
+              </div>
               <br />
-              <label for="Name">Tech Stack: </label><input
-                type="text"
-                placeholder={job.tech}
-                class="input input-bordered input-primary w-full max-w-xs"
-                on:input={(event) => {
-                  if (event.target.value) {
-                    job.tech = event.target.value;
-                  }
-                }}
-              />
+              <div class="flex flex-col">
+                <label for="Name">Tech Stack: </label><input
+                  type="text"
+                  placeholder={tech_stack}
+                  class="input input-bordered input-primary w-100"
+                  on:input={(event) => {
+                    if (event.target.value) {
+                      tech_stack = event.target.value;
+                    }
+                  }}
+                />
+              </div>
               <br />
-              <label for="Name">Job Description: </label><textarea
-                class="textarea textarea-primary"
-                placeholder={job.description}
-                rows="3"
-                on:input={(event) => {
-                  if (event.target.value) {
-                    job.description = event.target.value;
-                  }
-                }}
-              />
+              <div class="flex flex-col">
+                <label for="Name">Job Description: </label><textarea
+                  class="textarea textarea-primary w-100"
+                  placeholder={exp_desp}
+                  rows="3"
+                  on:input={(event) => {
+                    if (event.target.value) {
+                      exp_desp = event.target.value;
+                    }
+                  }}
+                />
+              </div>
             </div>
           </div>
 
@@ -182,38 +196,44 @@
             <input type="checkbox" />
             <div class="collapse-title text-xl font-medium">Education</div>
             <div class="collapse-content">
-              <label for="Name">Degree: </label><input
-                type="text"
-                placeholder={education.degree}
-                class="input input-bordered input-primary w-full max-w-xs"
-                on:input={(event) => {
-                  if (event.target.value) {
-                    education.degree = event.target.value;
-                  }
-                }}
-              />
+              <div class="flex flex-col">
+                <label for="Name">Degree: </label><input
+                  type="text"
+                  placeholder={degree}
+                  class="input input-bordered input-primary w-100"
+                  on:input={(event) => {
+                    if (event.target.value) {
+                      degree = event.target.value;
+                    }
+                  }}
+                />
+              </div>
               <br />
-              <label for="Name">University Name: </label><input
-                type="text"
-                placeholder={education.university}
-                class="input input-bordered input-primary w-full max-w-xs"
-                on:input={(event) => {
-                  if (event.target.value) {
-                    education.university = event.target.value;
-                  }
-                }}
-              />
+              <div class="flex flex-col">
+                <label for="Name">University Name: </label><input
+                  type="text"
+                  placeholder={uni_name}
+                  class="input input-bordered input-primary w-100"
+                  on:input={(event) => {
+                    if (event.target.value) {
+                      uni_name = event.target.value;
+                    }
+                  }}
+                />
+              </div>
               <br />
-              <label for="Name">Place: </label><input
-                type="text"
-                placeholder={education.place}
-                class="input input-bordered input-primary w-full max-w-xs"
-                on:input={(event) => {
-                  if (event.target.value) {
-                    education.place = event.target.value;
-                  }
-                }}
-              />
+              <div class="flex flex-col">
+                <label for="Name">Place: </label><input
+                  type="text"
+                  placeholder={place}
+                  class="input input-bordered input-primary w-100"
+                  on:input={(event) => {
+                    if (event.target.value) {
+                      place = event.target.value;
+                    }
+                  }}
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -227,13 +247,11 @@
   >
     <div id="resumeBg">
       <div class="text-center mt-4 text-[40px] text-black font-bold">
-        {header.name}
+        {name}
       </div>
-      <p class="text-center text-xs" style="margin: -4px 0 4px 0;">
-        {header.role}
-      </p>
+      <p class="text-center text-xs" style="margin: -4px 0 4px 0;">{role}</p>
       <div class="text-center" id="socials">
-        {header.social}
+        {social}
       </div>
       <div class="" id="summary">
         <h1>Summary</h1>
@@ -251,16 +269,15 @@
           class="mt-1"
           style="display: flex; justify-content: space-between;"
         >
-          <div id="title" style="order: 1;">{job.title}</div>
-          <div class="mr-4 text-black" style="order: 2;">{job.date}</div>
+          <div id="title" style="order: 1;">{job_title}</div>
+          <div class="mr-4 text-black" style="order: 2;">{job_date}</div>
         </div>
-        <div class="text-black ml-5">{job.type}</div>
+        <div class="text-black ml-5">{job_type}</div>
         <div class="text-black ml-5" id="tech_stack">
-          <b>Technology:</b>
-          {job.tech}
+          <b>Technology:</b> {tech_stack}
         </div>
         <div class="ml-5 mr-4 text-black">
-          {job.description}
+          {exp_desp}
         </div>
       </div>
 
@@ -273,20 +290,18 @@
           <div id="title" style="order: 1;">ProjectName</div>
           <div class="mr-4 text-black" style="order: 2;">20 Jan</div>
         </div>
-        <div class="text-black ml-5">{job.type}</div>
-        <div class="text-black ml-5" id="tech_stack">
-          <b>Technology: </b>{job.tech}
-        </div>
+        <div class="text-black ml-5">{job_type}</div>
+        <div class="text-black ml-5" id="tech_stack"><b>Technology: </b>{tech_stack}</div>
         <div class="ml-5 mr-4 text-black">
-          {job.description}
+          {exp_desp}
         </div>
       </div>
 
       <div class="">
         <h1>Education</h1>
-        <div id="title">{education.degree}</div>
-        <div class="text-black ml-5">{education.university}</div>
-        <div class="text-black ml-5">{education.place}</div>
+        <div id="title">{degree}</div>
+        <div class="text-black ml-5">{uni_name}</div>
+        <div class="text-black ml-5">{place}</div>
       </div>
     </div>
   </div>
@@ -297,6 +312,7 @@
     RightSideBar
     {#if headerAccOpen}
       WORK
+      {nameLen}
     {/if}
 
     <button
