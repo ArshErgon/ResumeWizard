@@ -11,18 +11,27 @@
 
   let summary_description =
     "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus natus iusto alias adipisci? Vel rem corrupti atque, facere laudantium delectus ab! Quia, possimus quibusdam fuga sequi rem perspiciatis quas omnis!";
-  let skills = "Rust * Pokemon * extra things";
+  let skills = "Rust • Pokemon • extra things";
   let job = {
-    title: "Open Source Developer",
-    type: "Full Time",
-    date: "20 Jan 2022-Present",
-    tech: "CSS * HTML * Rust",
-    description: "* Some random experience for the user",
+    title: "",
+    type: "",
+    date: "",
+    tech: "",
+    description: "",
   };
+
+  let projects = {
+    title: "",
+    date: "",
+    link: "",
+    tech: "",
+    description: "",
+  };
+
   let education = {
-    degree: "Bachlores",
-    university: "Random Uni",
-    place: "remote",
+    degree: "",
+    university: "",
+    place: "",
   };
 
   //   accordion checker
@@ -44,6 +53,92 @@
     summary_description = replaceAsterisks(summary_description);
     job.description = replaceAsterisks(job.description);
     education.degree = titleCase(education.degree);
+  }
+
+  // for work_experience dummyData
+  let work_experience_list = [
+    {
+      title: "Open Source Developer",
+      type: "Full Time",
+      date: "20 Jan 2022-Present",
+      tech: "CSS • HTML • Rust",
+      description: "• Some random experience for the user",
+    },
+  ];
+
+  let project_list = [
+    {
+      title: "ProjectOne",
+      date: "1 Jan 2023 - Present",
+      link: "gogole.com",
+      tech: "rust • graphql",
+      description: "• small points description",
+    },
+  ];
+
+  //
+
+  let education_list = [
+    {
+      degree: "Bachlores In Computer Science",
+      university: "Oxford",
+      place: "Oxford",
+    },
+  ];
+
+  let hasEditWork = false;
+  function addMoreExperience() {
+    let newJob = { ...job };
+    newJob.title = titleCase(newJob.title);
+    newJob.type = titleCase(newJob.type);
+    newJob.description = replaceAsterisks(newJob.description);
+    work_experience_list = [...work_experience_list, newJob];
+    if (!hasEditWork) {
+      work_experience_list.shift();
+      hasEditWork = !hasEditWork;
+    }
+    job["title"] = "";
+    job["date"] = "";
+    job["type"] = "";
+    job["tech"] = "";
+    job["description"] = "";
+    console.log(work_experience_list, hasEditWork)
+  }
+
+  let hasEditProject = false;
+  function addMoreProject() {
+    let newProject = { ...projects };
+    newProject.title = titleCase(newProject.title);
+    newProject.description = replaceAsterisks(newProject.description);
+    newProject.tech = replaceAsterisks(newProject.tech);
+    project_list = [...project_list, newProject];
+    if (!hasEditProject) {
+      project_list.shift();
+      hasEditProject = !hasEditProject;
+    }
+    // rechange the value
+    projects["title"] = "";
+    projects["date"] = "";
+    projects["link"] = "";
+    projects["tech"] = "";
+    projects["description"] = "";
+  }
+
+  let hasEditEducation = false;
+  function addMoreEducation() {
+    let newEducation = { ...education };
+    newEducation.degree = titleCase(newEducation.degree);
+    newEducation.university = titleCase(newEducation.university);
+    newEducation.place = titleCase(newEducation.place);
+    education_list = [...education_list, newEducation];
+    // rechange the value
+    if (!hasEditEducation) {
+      education_list.shift();
+      hasEditEducation = !hasEditEducation;
+    }
+    education["degree"] = "";
+    education["university"] = "";
+    education["place"] = "";
   }
 </script>
 
@@ -154,6 +249,17 @@
                 }}
               />
               <br />
+              <label for="Name">Date: </label><input
+                type="text"
+                placeholder={job.date}
+                class="input input-bordered input-primary w-full max-w-xs"
+                on:input={(event) => {
+                  if (event.target.value) {
+                    job.date = event.target.value;
+                  }
+                }}
+              />
+              <br />
               <label for="Name">Tech Stack: </label><input
                 type="text"
                 placeholder={job.tech}
@@ -166,18 +272,72 @@
               />
               <br />
               <label for="Name">Job Description: </label><textarea
-                class="textarea textarea-primary"
+                type="text"
                 placeholder={job.description}
-                rows="3"
+                row="3"
+                class="textarea textarea-primary"
                 on:input={(event) => {
                   if (event.target.value) {
                     job.description = event.target.value;
                   }
                 }}
               />
+              <button class="btn btn-primary" on:click={addMoreExperience}
+                >Add More Experience</button
+              >
             </div>
           </div>
-
+          <div class="collapse bg-base-200 collapse-arrow">
+            <input type="checkbox" />
+            <div class="collapse-title text-xl font-medium">Projects</div>
+            <div class="collapse-content">
+              <label for="Name">title: </label><input
+                type="text"
+                placeholder={projects.title}
+                class="input input-bordered input-primary w-full max-w-xs"
+                on:input={(event) => {
+                  if (event.target.value) {
+                    projects.title = event.target.value;
+                  }
+                }}
+              />
+              <br />
+              <label for="Name">Date: </label><input
+                type="text"
+                placeholder={projects.date}
+                class="input input-bordered input-primary w-full max-w-xs"
+                on:input={(event) => {
+                  if (event.target.value) {
+                    projects.date = event.target.value;
+                  }
+                }}
+              />
+              <br />
+              <label for="Name">Tech: </label><input
+                type="text"
+                placeholder={projects.tech}
+                class="input input-bordered input-primary w-full max-w-xs"
+                on:input={(event) => {
+                  if (event.target.value) {
+                    projects.tech = event.target.value;
+                  }
+                }}
+              />
+              <label for="Name">Project description: </label><textarea
+                class="textarea textarea-primary"
+                placeholder={projects.description}
+                rows="5"
+                on:input={(event) => {
+                  if (event.target.value) {
+                    projects.description = event.target.value;
+                  }
+                }}
+              />
+              <button class="btn btn-primary" on:click={addMoreProject}
+                >Add Projects</button
+              >
+            </div>
+          </div>
           <div class="collapse bg-base-200 collapse-arrow">
             <input type="checkbox" />
             <div class="collapse-title text-xl font-medium">Education</div>
@@ -214,6 +374,9 @@
                   }
                 }}
               />
+              <button class="btn btn-primary" on:click={addMoreEducation}
+                >Add Education</button
+              >
             </div>
           </div>
         </div>
@@ -247,46 +410,54 @@
 
       <div class="" id="work_experience">
         <h1>Work Experience</h1>
-        <div
-          class="mt-1"
-          style="display: flex; justify-content: space-between;"
-        >
-          <div id="title" style="order: 1;">{job.title}</div>
-          <div class="mr-4 text-black" style="order: 2;">{job.date}</div>
-        </div>
-        <div class="text-black ml-5">{job.type}</div>
-        <div class="text-black ml-5" id="tech_stack">
-          <b>Technology:</b>
-          {job.tech}
-        </div>
-        <div class="ml-5 mr-4 text-black">
-          {job.description}
-        </div>
+        {#each work_experience_list as experience}
+          <div
+            class="mt-1"
+            style="display: flex; justify-content: space-between;"
+          >
+            <div id="title" style="order: 1;">{experience.title}</div>
+            <div class="mr-4 text-black" style="order: 2;">
+              {experience.date}
+            </div>
+          </div>
+          <div class="text-black ml-5">{experience.type}</div>
+          <div class="text-black ml-5" id="tech_stack">
+            <b>Technology:</b>
+            {experience.tech}
+          </div>
+          <div class="ml-5 mr-4 text-black">
+            {experience.description}
+          </div>
+        {/each}
       </div>
 
       <div id="projects">
         <h1>Projects</h1>
+        {#each project_list as project}
         <div
           class="mt-1"
           style="display: flex; justify-content: space-between;"
         >
-          <div id="title" style="order: 1;">ProjectName</div>
-          <div class="mr-4 text-black" style="order: 2;">20 Jan</div>
+          <div id="title" style="order: 1;">{project.title}</div>
+          <div class="mr-4 text-black" style="order: 2;">{project.date}</div>
         </div>
-        <div class="text-black ml-5">{job.type}</div>
+        <div class="text-black ml-5">{project.link}</div>
         <div class="text-black ml-5" id="tech_stack">
-          <b>Technology: </b>{job.tech}
+          <b>Technology: </b>{project.tech}
         </div>
         <div class="ml-5 mr-4 text-black">
-          {job.description}
+          {project.description}
         </div>
+        {/each}
       </div>
 
       <div class="">
         <h1>Education</h1>
+        {#each education_list as education}
         <div id="title">{education.degree}</div>
         <div class="text-black ml-5">{education.university}</div>
         <div class="text-black ml-5">{education.place}</div>
+        {/each}
       </div>
     </div>
   </div>
