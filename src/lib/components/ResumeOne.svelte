@@ -46,6 +46,29 @@
     console.log("WORKING");
   }
 
+  // SUMMARY CHECKER
+  let summaryAccOpen = false;
+  function toggleSummary() {
+    summaryAccOpen = !summaryAccOpen;
+  }
+
+  // SKILLS CHECKER
+  let skillAccOpen = false;
+  function toggleSkill() {
+    skillAccOpen = !skillAccOpen;
+  }
+
+  // EXPERIENCE CHECKER
+  let experienceAccOpen = false;
+  function toggleExperience() {
+    experienceAccOpen = !experience;
+  }
+
+  // PROJECT SECTION
+  let projectAccOpen = false;
+  function toggleProject() {
+    projectAccOpen = !projectAccOpen;
+  }
 
   // for work_experience dummyData
   let work_experience_list = [
