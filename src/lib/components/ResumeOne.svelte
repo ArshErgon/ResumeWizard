@@ -37,52 +37,31 @@
 
   // Some helpers for user
 
-  let summary_helper =
-    "A nice summary would be of 150 to 200 words your current total wordsx ";
+  let helper = {
+    header: "helper for the header section",
+    summary:
+    "A nice summary would be of 150 to 200 words your current total wordsx lorem A nice summary would be of 150 to 200 words your current total wordsx loremA nice summary would be of 150 to 200 words your current total wordsx lorem",
+    skill: "helper for skills",
+    experience: "helper for experience",
+    project: "helper for project",
+    education: "helper for education",  
+  }
+
   //   accordion checker
 
   // SECTIONS
-  // let sections = {
-  //   header: false,
-  //   summary: false,
-  //   skill: false,
-  // }
-
-  // function toggleSection(section) {
-  //   sections[section] = !sections[section]
-  // }
+  let sections = {
+    header: false,
+    summary: false,
+    skill: false,
+    experience: false,
+    project: false,
+    education: false,
+  }
 
   // HEADER CHECKER
-  let headerAccOpen = false;
-  function toggleHeader() {
-    headerAccOpen = !headerAccOpen;
-  }
   function handleFocus() {
     console.log("WORKING");
-  }
-
-  // SUMMARY CHECKER
-  let summaryAccOpen = false;
-  function toggleSummary() {
-    summaryAccOpen = !summaryAccOpen;
-  }
-
-  // SKILLS CHECKER
-  let skillAccOpen = false;
-  function toggleSkill() {
-    skillAccOpen = !skillAccOpen;
-  }
-
-  // EXPERIENCE CHECKER
-  let experienceAccOpen = false;
-  function toggleExperience() {
-    experienceAccOpen = !experience;
-  }
-
-  // PROJECT SECTION
-  let projectAccOpen = false;
-  function toggleProject() {
-    projectAccOpen = !projectAccOpen;
   }
 
   // for work_experience dummyData
@@ -178,8 +157,8 @@
   >
     <div class="h-30" id="accordion">
       <div class="collapse bg-base-200 collapse-arrow">
-        <input type="checkbox" bind:checked={headerAccOpen} />
-        <div class="collapse-title text-xl font-medium" on:click={toggleHeader}>
+        <input type="checkbox" bind:checked={sections["header"]} />
+        <div class="collapse-title text-xl font-medium">
           Header
         </div>
         <div class="collapse-content">
@@ -219,7 +198,7 @@
         </div>
 
         <div class="collapse bg-base-200 collapse-arrow">
-          <input type="checkbox" />
+          <input type="checkbox" bind:checked={sections["summary"]} />
           <div class="collapse-title text-xl font-medium">Summary</div>
           <div class="collapse-content">
             <label for="Name">Summary description: </label><textarea
@@ -234,7 +213,7 @@
             />
           </div>
           <div class="collapse bg-base-200 collapse-arrow">
-            <input type="checkbox" />
+            <input type="checkbox" bind:checked={sections["skill"]} />
             <div class="collapse-title text-xl font-medium">Skills</div>
             <div class="collapse-content">
               <label for="Name">Skills: </label><input
@@ -251,7 +230,7 @@
           </div>
 
           <div class="collapse bg-base-200 collapse-arrow">
-            <input type="checkbox" />
+            <input type="checkbox" bind:checked={sections["experience"]} />
             <div class="collapse-title text-xl font-medium">
               Work Experience
             </div>
@@ -317,7 +296,7 @@
             </div>
           </div>
           <div class="collapse bg-base-200 collapse-arrow">
-            <input type="checkbox" />
+            <input type="checkbox" bind:checked={sections["project"]} />
             <div class="collapse-title text-xl font-medium">Projects</div>
             <div class="collapse-content">
               <label for="Name">Project Title: </label><input
@@ -369,7 +348,7 @@
             </div>
           </div>
           <div class="collapse bg-base-200 collapse-arrow">
-            <input type="checkbox" />
+            <input type="checkbox" bind:checked={sections["education"]} />
             <div class="collapse-title text-xl font-medium">Education</div>
             <div class="collapse-content">
               <label for="Name">Degree: </label><input
@@ -493,21 +472,53 @@
   </div>
   <div class="divider lg:divider-horizontal" />
   <div
-    class="grid flex-grow h-32 card bg-base-300 rounded-box place-items-center"
+    class="grid flex-grow h-50 w-20 card bg-base-300 rounded-box"
   >
+  <div class="h-30" id="right-accordion">
     <div class="text-center">Right Section</div>
-    {#if headerAccOpen}
-      WORK
-    {/if}
+    <div class="right-container mt-5">
+      ...
+      {#if sections["header"]}
+        {helper["header"]}
+        <h1>HELLOW</h1>
+      {/if}
+      {#if sections["summary"]}
+        {helper["summary"]}
+        <h1>HELLOW</h1>
 
+      {/if}
+      {#if sections["skill"]}
+        {helper["skill"]}
+        <h1>HELLOW</h1>
+
+      {/if}
+      {#if sections["experience"]}
+        {helper["experience"]}
+        <h1>HELLOW</h1>
+
+      {/if}
+      {#if sections["project"]}
+        {helper["project"]}
+        <h1>HELLOW</h1>
+
+      {/if}
+      {#if sections["education"]}
+        {helper["education"]}
+        <h1>HELLOW</h1>
+
+      {/if}
+    </div>
+<!--     
     <button
-      class="btn btn-primary"
+      class="btn btn-primary mt-10"
       onclick="window.print(document.getElementById('leftSideBar').innerHTML);"
       >Print div section</button
-    >
+    > 
+  -->
+
   </div>
 </div>
-
+</div>
 <style>
   input {
     margin-bottom: 10px;
@@ -550,5 +561,10 @@
     font-weight: bolder;
     margin: 3px 0 0 20px;
     font-size: 15pt;
+  }
+  .right-container {
+    background: red;
+    width: 90%;
+    margin-top: -80px;
   }
 </style>
