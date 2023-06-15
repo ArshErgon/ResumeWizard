@@ -34,6 +34,9 @@
     place: "",
   };
 
+  // Some helpers for user
+  
+  let summary_helper = "A nice summary would be of 150 to 200 words your current total wordsx ";
   //   accordion checker
   let headerAccOpen = false;
   function toggleHeader() {
@@ -43,18 +46,6 @@
     console.log("WORKING");
   }
 
-  // reactive component
-  $: {
-    header.name = titleCase(header.name);
-    header.role = titleCase(header.role);
-    skills = replaceAsterisks(skills);
-    skills = titleCase(skills);
-    job.tech = replaceAsterisks(job.tech);
-    summary_description = replaceAsterisks(summary_description);
-    job.description = replaceAsterisks(job.description);
-    header.social = replaceAsterisks(header.social);
-    education.degree = titleCase(education.degree);
-  }
 
   // for work_experience dummyData
   let work_experience_list = [
@@ -143,12 +134,12 @@
   }
 </script>
 
-<div class="flex flex-col w-full lg:flex-row">
+<div class="flex flex-col w-full lg:flex-row" id="main_view">
   <div
     class="grid flex-grow h-100 card bg-base-300 rounded-box"
     id="leftSideBar"
   >
-    <div class="h-30">
+    <div class="h-30" id="accordion">
       <div class="collapse bg-base-200 collapse-arrow">
         <input type="checkbox" bind:checked={headerAccOpen} />
         <div class="collapse-title text-xl font-medium" on:click={toggleHeader}>
@@ -389,7 +380,7 @@
     class="grid flex-grow card bg-base-300 rounded-box place-items-center"
     id="page"
   >
-    <div id="resumeBg">
+    <div class="resumeBg" id="resumeBg">
       <div class="text-center mt-4 text-[40px] text-black font-bold">
         {header.name}
       </div>
