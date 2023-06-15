@@ -292,7 +292,7 @@
             <input type="checkbox" />
             <div class="collapse-title text-xl font-medium">Projects</div>
             <div class="collapse-content">
-              <label for="Name">title: </label><input
+              <label for="Name">Project Title: </label><input
                 type="text"
                 placeholder={projects.title}
                 class="input input-bordered input-primary w-full max-w-xs"
