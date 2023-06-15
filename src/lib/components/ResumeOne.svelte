@@ -6,12 +6,12 @@
   let header = {
     name: "John Bose",
     role: "Software Developer",
-    social: "github, youtube, linkedin, and more",
+    social: "https:://github.com • https://www.linkedin.com • https://example.com",
   };
 
   let summary_description =
     "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus natus iusto alias adipisci? Vel rem corrupti atque, facere laudantium delectus ab! Quia, possimus quibusdam fuga sequi rem perspiciatis quas omnis!";
-  let skills = "Rust • Pokemon • extra things";
+  let skills = "Rust • Python • JavaScript • Svelte";
   let job = {
     title: "",
     type: "",
@@ -52,6 +52,7 @@
     job.tech = replaceAsterisks(job.tech);
     summary_description = replaceAsterisks(summary_description);
     job.description = replaceAsterisks(job.description);
+    header.social = replaceAsterisks(header.social);
     education.degree = titleCase(education.degree);
   }
 
@@ -80,9 +81,9 @@
 
   let education_list = [
     {
-      degree: "Bachlores In Computer Science",
+      degree: "Bachlores In Computer Science, 2023",
       university: "Oxford",
-      place: "Oxford",
+      place: "England, London",
     },
   ];
 
@@ -291,7 +292,7 @@
             <input type="checkbox" />
             <div class="collapse-title text-xl font-medium">Projects</div>
             <div class="collapse-content">
-              <label for="Name">title: </label><input
+              <label for="Name">Project Title: </label><input
                 type="text"
                 placeholder={projects.title}
                 class="input input-bordered input-primary w-full max-w-xs"
