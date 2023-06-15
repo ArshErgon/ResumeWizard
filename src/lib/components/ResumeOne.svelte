@@ -186,7 +186,7 @@
           <label for="Name">Name: </label><input
             type="text"
             placeholder={header.name}
-            class="input input-bordered input-primary w-full max-w-xs"
+            class="input input-bordered input-primary w-full w-100"
             on:focus={handleFocus}
             on:input={(event) => {
               if (event.target.value) {
@@ -198,7 +198,7 @@
           <label for="role">Role: </label><input
             type="text"
             placeholder={header.role}
-            class="input input-bordered input-primary w-full max-w-xs"
+            class="input input-bordered input-primary w-full w-100"
             on:input={(event) => {
               if (event.target.value) {
                 header.role = event.target.value;
@@ -209,7 +209,7 @@
           <label for="role">Socials: </label><input
             type="text"
             placeholder={header.social}
-            class="input input-bordered input-primary w-full max-w-xs"
+            class="input input-bordered input-primary w-full w-100"
             on:input={(event) => {
               if (event.target.value) {
                 header.social = event.target.value;
@@ -223,7 +223,7 @@
           <div class="collapse-title text-xl font-medium">Summary</div>
           <div class="collapse-content">
             <label for="Name">Summary description: </label><textarea
-              class="textarea textarea-primary"
+              class="textarea textarea-primary w-full w-100"
               placeholder={summary_description}
               rows="5"
               on:input={(event) => {
@@ -240,7 +240,7 @@
               <label for="Name">Skills: </label><input
                 type="text"
                 placeholder={skills}
-                class="input input-bordered input-primary w-full max-w-xs"
+                class="input input-bordered input-primary w-full w-100"
                 on:input={(event) => {
                   if (event.target.value) {
                     skills = event.target.value;
@@ -258,7 +258,7 @@
             <div class="collapse-content">
               <label for="Name">Job Title: </label><input
                 type="text"
-                class="input input-bordered input-primary w-full max-w-xs"
+                class="input input-bordered input-primary w-full w-100"
                 bind:value={job.title}
                 on:input={(event) => {
                   if (event.target.value) {
@@ -269,7 +269,7 @@
               <br />
               <label for="Name">Job Type: </label><input
                 type="text"
-                class="input input-bordered input-primary w-full max-w-xs"
+                class="input input-bordered input-primary w-full w-100"
                 bind:value={job.type}
                 on:input={(event) => {
                   if (event.target.value) {
@@ -280,7 +280,7 @@
               <br />
               <label for="Name">Date: </label><input
                 type="text"
-                class="input input-bordered input-primary w-full max-w-xs"
+                class="input input-bordered input-primary w-full w-100"
                 bind:value={job.date}
                 on:input={(event) => {
                   if (event.target.value) {
@@ -291,7 +291,7 @@
               <br />
               <label for="Name">Tech Stack: </label><input
                 type="text"
-                class="input input-bordered input-primary w-full max-w-xs"
+                class="input input-bordered input-primary w-full w-100"
                 bind:value={job.tech}
                 on:input={(event) => {
                   if (event.target.value) {
@@ -303,7 +303,7 @@
               <label for="Name">Job Description: </label><textarea
                 type="text"
                 row="3"
-                class="textarea textarea-primary"
+                class="input input-bordered input-primary w-full w-100 w-full w-100"
                 bind:value={job.description}
                 on:input={(event) => {
                   if (event.target.value) {
@@ -322,7 +322,7 @@
             <div class="collapse-content">
               <label for="Name">Project Title: </label><input
                 type="text"
-                class="input input-bordered input-primary w-full max-w-xs"
+                class="input input-bordered input-primary w-full w-100"
                 bind:value={projects.title}
                 on:input={(event) => {
                   if (event.target.value) {
@@ -333,7 +333,7 @@
               <br />
               <label for="Name">Date: </label><input
                 type="text"
-                class="input input-bordered input-primary w-full max-w-xs"
+                class="input input-bordered input-primary w-full w-100"
                 bind:value={projects.date}
                 on:input={(event) => {
                   if (event.target.value) {
@@ -344,7 +344,7 @@
               <br />
               <label for="Name">Tech: </label><input
                 type="text"
-                class="input input-bordered input-primary w-full max-w-xs"
+                class="input input-bordered input-primary w-full w-100"
                 bind:value={projects.tech}
                 on:input={(event) => {
                   if (event.target.value) {
@@ -352,8 +352,9 @@
                   }
                 }}
               />
+              <br />
               <label for="Name">Project description: </label><textarea
-                class="textarea textarea-primary"
+                class="input input-bordered input-primary w-full w-100"
                 rows="5"
                 bind:value={projects.description}
                 on:input={(event) => {
@@ -363,7 +364,7 @@
                 }}
               />
               <button class="btn btn-primary" on:click={addMoreProject}
-                >Add Projects</button
+                >Add Project</button
               >
             </div>
           </div>
@@ -373,7 +374,7 @@
             <div class="collapse-content">
               <label for="Name">Degree: </label><input
                 type="text"
-                class="input input-bordered input-primary w-full max-w-xs"
+                class="input input-bordered input-primary w-full w-100"
                 bind:value={education.degree}
                 on:input={(event) => {
                   if (event.target.value) {
@@ -384,7 +385,7 @@
               <br />
               <label for="Name">University Name: </label><input
                 type="text"
-                class="input input-bordered input-primary w-full max-w-xs"
+                class="input input-bordered input-primary w-full w-100"
                 bind:value={education.university}
                 on:input={(event) => {
                   if (event.target.value) {
@@ -395,7 +396,7 @@
               <br />
               <label for="Name">Place: </label><input
                 type="text"
-                class="input input-bordered input-primary w-full max-w-xs"
+                class="input input-bordered input-primary w-full w-100"
                 bind:value={education.place}
                 on:input={(event) => {
                   if (event.target.value) {
@@ -508,6 +509,9 @@
 </div>
 
 <style>
+  input {
+    margin-bottom: 10px;
+  }
   #leftSideBar {
     width: 10%;
   }
