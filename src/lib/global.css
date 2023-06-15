@@ -6,12 +6,26 @@
 @media print {
     body {
         visibility: hidden;
+        margin: 0;
+        padding: 0;
+    }
+    @page {
+        margin: 0;
+        padding: 0;
+      }
+    
+    .collapse {
+        display: none;
+    }
+    
+    .resumeBg * {
+        display: visible;
+        visibility: visible;
+          top: 0;
+          left: 0;
+          overflow-y: auto;
     }
 }
- */
-/* 
-
-the above will print only the resume, but its not hiding the accordion 
 
 #main-view {
     margin-top: 30px;
