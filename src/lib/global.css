@@ -13,4 +13,6 @@
 
 the above will print only the resume, but its not hiding the accordion 
 
- */
+#main-view {
+    margin-top: 30px;
+}
