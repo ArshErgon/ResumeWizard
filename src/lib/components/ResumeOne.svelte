@@ -81,9 +81,9 @@
 
   let education_list = [
     {
-      degree: "Bachlores In Computer Science",
+      degree: "Bachlores In Computer Science, 2023",
       university: "Oxford",
-      place: "Oxford",
+      place: "England, London",
     },
   ];
 
