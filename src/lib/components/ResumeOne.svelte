@@ -82,8 +82,8 @@
       title: "ProjectOne",
       date: "1 Jan 2023 - Present",
       link: "gogole.com",
-      tech: "rust • graphql",
-      description: "• small points description",
+      tech: "Rust • GraphQL",
+      description: "• Small points description",
     },
   ];
 
