@@ -59,6 +59,9 @@
   };
 
   // HEADER CHECKER
+  let header_condition = {
+    name: false,
+  };
   function handleFocus() {
     console.log("WORKING");
   }
