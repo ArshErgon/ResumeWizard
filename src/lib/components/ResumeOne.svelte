@@ -38,13 +38,12 @@
   // Some helpers for user
 
   let helper = {
-    header: "helper for the header section",
-    summary:
-      "A nice summary would be of 150 to 200 words your current total wordsx lorem A nice summary would be of 150 to 200 words your current total wordsx loremA nice summary would be of 150 to 200 words your current total wordsx lorem",
-    skill: "helper for skills",
-    experience: "helper for experience",
-    project: "helper for project",
-    education: "helper for education",
+    header: "Header",
+    summary: "Summary",
+    skill: "Skills",
+    experience: "Experience",
+    project: "Projects",
+    education: "Education",
   };
 
   //   accordion checker
