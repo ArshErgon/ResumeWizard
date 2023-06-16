@@ -522,7 +522,7 @@
   <div class="divider lg:divider-horizontal" />
   <div class="grid flex-grow h-50 w-20 card bg-base-300 rounded-box">
     <div class="h-30" id="right-accordion">
-      <div class="text-center">Right Section</div>
+      <div class="text-center pt-4">Editing Section</div>
       <div class="right-container mt-5">
         ...
         {#if sections["header"]}
