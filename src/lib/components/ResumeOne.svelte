@@ -413,6 +413,8 @@
                 type="text"
                 class="input input-bordered input-primary w-full w-100"
                 bind:value={education.university}
+                on:focus={() => (resumeFields.education_uni_name = true)}
+                on:blur={() => (resumeFields.education_uni_name = false)}
                 on:input={(event) => {
                   if (event.target.value) {
                     education.university = event.target.value;
@@ -524,44 +526,146 @@
     <div class="h-30" id="right-accordion">
       <div class="text-center pt-4">Editing Section</div>
       <div class="right-container mt-5">
-        ...
         {#if sections["header"]}
-          {helper["header"]}
-          <h1>HELLOW</h1>
+          <h1
+            class="font-semibold font-white"
+            style="color: #A6ADBA; border-bottom: 1px solid #A6ADBA;"
+          >
+            {helper["header"]}
+          </h1>
+          {#if resumeFields.name}
+            <div>
+              <em>Pro tip: You can change the color and size of your name.</em>
+            </div>
+            <p class="ml-5 mt-3"><b>Name:</b> {header.name}</p>
+          {:else if resumeFields.socials}
+            <p class="ml-5 mt-3"><b>Socials:</b> {header.social}</p>
+          {:else if resumeFields.role}
+            <p class="ml-5 mt-3"><b>Socials:</b> {header.role}</p>
+          {:else}
+            <em>Add Some GOOD HEADERS</em>
+          {/if}
         {/if}
+
         {#if sections["summary"]}
-          {helper["summary"]}
-          <h1>HELLOW</h1>
+          <h1
+            class="font-semibold font-white"
+            style="color: #A6ADBA; border-bottom: 1px solid #A6ADBA;"
+          >
+            {helper["summary"]}
+          </h1>
+          {#if resumeFields.summary_description}
+            <em>Pro tip:</em>
+            <p class="ml-5 mt-3">
+              <b>Description:</b>
+              <textarea
+              class="textarea textarea-primary w-full w-100"
+              placeholder={summary_description}
+              rows="5"
+              on:focus={() => (resumeFields.summary_description = true)}
+              on:blur={() => (resumeFields.summary_description = false)}
+              on:input={(event) => {
+                if (event.target.value) {
+                  summary_description = event.target.value;
+                }
+              }}
+            />
+            </p>
+          {:else}
+            <p class="ml-5 mt-3">ADD IDEAS</p>
+          {/if}
         {/if}
+
         {#if sections["skill"]}
-          {helper["skill"]}
-          <h1>HELLOW</h1>
+          <h1
+            class="font-semibold font-white"
+            style="color: #A6ADBA; border-bottom: 1px solid #A6ADBA;"
+          >
+            {helper["skill"]}
+          </h1>
+          {#if resumeFields.skills};
+            <em>Pro tip: You can change the color and size of your name.</em>
+            <p class="ml-5 mt-3"><b>Name:</b> {header.name}</p>
+          {:else}
+            <em>Add Some GOOD HEADERS</em>
+          {/if}
         {/if}
+
         {#if sections["experience"]}
-          {helper["experience"]}
-          <h1>HELLOW</h1>
+          <h1
+            class="font-semibold font-white"
+            style="color: #A6ADBA; border-bottom: 1px solid #A6ADBA;"
+          >
+            {helper["experience"]}
+          </h1>
+          {#if resumeFields.job_title}
+          <em>Pro tip</em>
+          {:else if resumeFields.job_type}
+          <em>Pro tip</em>
+          {:else if resumeFields.job_date}
+          <em>Pro tip</em>
+          {:else if resumeFields.job_tech}
+          <em>Pro tip</em>
+          {:else if resumeFields.job_description}
+          <em>Pro tip</em>
+          {:else}
+          <em>Add SOME GOOD JOB TITLE</em>
+          {/if}
         {/if}
+
         {#if sections["project"]}
-          {helper["project"]}
-          <h1>HELLOW</h1>
+          <h1
+            class="font-semibold font-white"
+            style="color: #A6ADBA; border-bottom: 1px solid #A6ADBA;"
+          >
+            {helper["project"]}
+          </h1>
+          {#if resumeFields.project_title}
+          <em>Pro tip</em>
+          {:else if resumeFields.project_date}
+          <em>Pro tip</em>
+          {:else if resumeFields.project_tech}
+          <em>Pro tip</em>
+          {:else if resumeFields.project_description}
+          <em>Pro tip</em>
+          {:else}
+          <em>ADD GOOD EXPERIENCE DESCRIPTION</em>
+          {/if}
         {/if}
+
         {#if sections["education"]}
-          {helper["education"]}
-          <h1>HELLOW</h1>
+          <h1
+            class="font-semibold font-white"
+            style="color: #A6ADBA; border-bottom: 1px solid #A6ADBA;"
+          >
+            {helper["education"]}
+          </h1>
+          {#if resumeFields.education_degree}
+          <em>Pro tip</em>
+          {:else if resumeFields.education_uni_name}
+          <em>Pro tip</em>
+          {:else if resumeFields.education_place}
+          <em>Pro tip</em>
+          {:else}
+          <em>Add good education details</em>
+          {/if}
         {/if}
       </div>
-      <!--     
-    <button
-      class="btn btn-primary mt-10"
-      onclick="window.print(document.getElementById('leftSideBar').innerHTML);"
-      >Print div section</button
-    > 
-  -->
+
+      <button
+        class="btn btn-primary mt-10 ml-10"
+        onclick="window.print(document.getElementById('leftSideBar').innerHTML);"
+        >Print div section</button
+      >
     </div>
   </div>
 </div>
 
 <style>
+  em {
+    margin: 15px 15px 0 15px;
+    background: red;
+  }
   input {
     margin-bottom: 10px;
   }
@@ -603,10 +707,5 @@
     font-weight: bolder;
     margin: 3px 0 0 20px;
     font-size: 15pt;
-  }
-  .right-container {
-    background: red;
-    width: 90%;
-    margin-top: -80px;
   }
 </style>
