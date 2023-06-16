@@ -40,12 +40,12 @@
   let helper = {
     header: "helper for the header section",
     summary:
-    "A nice summary would be of 150 to 200 words your current total wordsx lorem A nice summary would be of 150 to 200 words your current total wordsx loremA nice summary would be of 150 to 200 words your current total wordsx lorem",
+      "A nice summary would be of 150 to 200 words your current total wordsx lorem A nice summary would be of 150 to 200 words your current total wordsx loremA nice summary would be of 150 to 200 words your current total wordsx lorem",
     skill: "helper for skills",
     experience: "helper for experience",
     project: "helper for project",
-    education: "helper for education",  
-  }
+    education: "helper for education",
+  };
 
   //   accordion checker
 
@@ -57,7 +57,7 @@
     experience: false,
     project: false,
     education: false,
-  }
+  };
 
   // HEADER CHECKER
   function handleFocus() {
@@ -158,9 +158,7 @@
     <div class="h-30" id="accordion">
       <div class="collapse bg-base-200 collapse-arrow">
         <input type="checkbox" bind:checked={sections["header"]} />
-        <div class="collapse-title text-xl font-medium">
-          Header
-        </div>
+        <div class="collapse-title text-xl font-medium">Header</div>
         <div class="collapse-content">
           <label for="Name">Name: </label><input
             type="text"
@@ -471,54 +469,47 @@
     </div>
   </div>
   <div class="divider lg:divider-horizontal" />
-  <div
-    class="grid flex-grow h-50 w-20 card bg-base-300 rounded-box"
-  >
-  <div class="h-30" id="right-accordion">
-    <div class="text-center">Right Section</div>
-    <div class="right-container mt-5">
-      ...
-      {#if sections["header"]}
-        {helper["header"]}
-        <h1>HELLOW</h1>
-      {/if}
-      {#if sections["summary"]}
-        {helper["summary"]}
-        <h1>HELLOW</h1>
-
-      {/if}
-      {#if sections["skill"]}
-        {helper["skill"]}
-        <h1>HELLOW</h1>
-
-      {/if}
-      {#if sections["experience"]}
-        {helper["experience"]}
-        <h1>HELLOW</h1>
-
-      {/if}
-      {#if sections["project"]}
-        {helper["project"]}
-        <h1>HELLOW</h1>
-
-      {/if}
-      {#if sections["education"]}
-        {helper["education"]}
-        <h1>HELLOW</h1>
-
-      {/if}
-    </div>
-<!--     
+  <div class="grid flex-grow h-50 w-20 card bg-base-300 rounded-box">
+    <div class="h-30" id="right-accordion">
+      <div class="text-center">Right Section</div>
+      <div class="right-container mt-5">
+        ...
+        {#if sections["header"]}
+          {helper["header"]}
+          <h1>HELLOW</h1>
+        {/if}
+        {#if sections["summary"]}
+          {helper["summary"]}
+          <h1>HELLOW</h1>
+        {/if}
+        {#if sections["skill"]}
+          {helper["skill"]}
+          <h1>HELLOW</h1>
+        {/if}
+        {#if sections["experience"]}
+          {helper["experience"]}
+          <h1>HELLOW</h1>
+        {/if}
+        {#if sections["project"]}
+          {helper["project"]}
+          <h1>HELLOW</h1>
+        {/if}
+        {#if sections["education"]}
+          {helper["education"]}
+          <h1>HELLOW</h1>
+        {/if}
+      </div>
+      <!--     
     <button
       class="btn btn-primary mt-10"
       onclick="window.print(document.getElementById('leftSideBar').innerHTML);"
       >Print div section</button
     > 
   -->
-
+    </div>
   </div>
 </div>
-</div>
+
 <style>
   input {
     margin-bottom: 10px;
