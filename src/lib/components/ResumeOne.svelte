@@ -37,52 +37,33 @@
 
   // Some helpers for user
 
-  let summary_helper =
-    "A nice summary would be of 150 to 200 words your current total wordsx ";
+  let helper = {
+    header: "Header",
+    summary: "Summary",
+    skill: "Skills",
+    experience: "Experience",
+    project: "Projects",
+    education: "Education",
+  };
+
   //   accordion checker
 
   // SECTIONS
-  // let sections = {
-  //   header: false,
-  //   summary: false,
-  //   skill: false,
-  // }
-
-  // function toggleSection(section) {
-  //   sections[section] = !sections[section]
-  // }
+  let sections = {
+    header: false,
+    summary: false,
+    skill: false,
+    experience: false,
+    project: false,
+    education: false,
+  };
 
   // HEADER CHECKER
-  let headerAccOpen = false;
-  function toggleHeader() {
-    headerAccOpen = !headerAccOpen;
-  }
+  let header_condition = {
+    name: false,
+  };
   function handleFocus() {
     console.log("WORKING");
-  }
-
-  // SUMMARY CHECKER
-  let summaryAccOpen = false;
-  function toggleSummary() {
-    summaryAccOpen = !summaryAccOpen;
-  }
-
-  // SKILLS CHECKER
-  let skillAccOpen = false;
-  function toggleSkill() {
-    skillAccOpen = !skillAccOpen;
-  }
-
-  // EXPERIENCE CHECKER
-  let experienceAccOpen = false;
-  function toggleExperience() {
-    experienceAccOpen = !experience;
-  }
-
-  // PROJECT SECTION
-  let projectAccOpen = false;
-  function toggleProject() {
-    projectAccOpen = !projectAccOpen;
   }
 
   // for work_experience dummyData
@@ -101,8 +82,8 @@
       title: "ProjectOne",
       date: "1 Jan 2023 - Present",
       link: "gogole.com",
-      tech: "rust • graphql",
-      description: "• small points description",
+      tech: "Rust • GraphQL",
+      description: "• Small points description",
     },
   ];
 
@@ -121,6 +102,7 @@
     let newJob = { ...job };
     newJob.title = titleCase(newJob.title);
     newJob.type = titleCase(newJob.type);
+    newJob.date = titleCase(newJon.date);
     newJob.description = replaceAsterisks(newJob.description);
     work_experience_list = [...work_experience_list, newJob];
     if (!hasEditWork) {
@@ -140,6 +122,7 @@
     newProject.title = titleCase(newProject.title);
     newProject.description = replaceAsterisks(newProject.description);
     newProject.tech = replaceAsterisks(newProject.tech);
+    newProject.date = titleCase(newProject.date);
     project_list = [...project_list, newProject];
     if (!hasEditProject) {
       project_list.shift();
@@ -178,16 +161,15 @@
   >
     <div class="h-30" id="accordion">
       <div class="collapse bg-base-200 collapse-arrow">
-        <input type="checkbox" bind:checked={headerAccOpen} />
-        <div class="collapse-title text-xl font-medium" on:click={toggleHeader}>
-          Header
-        </div>
+        <input type="checkbox" bind:checked={sections["header"]} />
+        <div class="collapse-title text-xl font-medium">Header</div>
         <div class="collapse-content">
           <label for="Name">Name: </label><input
             type="text"
             placeholder={header.name}
             class="input input-bordered input-primary w-full w-100"
-            on:focus={handleFocus}
+            on:focus={() => (header_condition.name = true)}
+            on:blur={() => (header_condition.name = false)}
             on:input={(event) => {
               if (event.target.value) {
                 header.name = event.target.value;
@@ -219,7 +201,7 @@
         </div>
 
         <div class="collapse bg-base-200 collapse-arrow">
-          <input type="checkbox" />
+          <input type="checkbox" bind:checked={sections["summary"]} />
           <div class="collapse-title text-xl font-medium">Summary</div>
           <div class="collapse-content">
             <label for="Name">Summary description: </label><textarea
@@ -234,7 +216,7 @@
             />
           </div>
           <div class="collapse bg-base-200 collapse-arrow">
-            <input type="checkbox" />
+            <input type="checkbox" bind:checked={sections["skill"]} />
             <div class="collapse-title text-xl font-medium">Skills</div>
             <div class="collapse-content">
               <label for="Name">Skills: </label><input
@@ -251,7 +233,7 @@
           </div>
 
           <div class="collapse bg-base-200 collapse-arrow">
-            <input type="checkbox" />
+            <input type="checkbox" bind:checked={sections["experience"]} />
             <div class="collapse-title text-xl font-medium">
               Work Experience
             </div>
@@ -317,7 +299,7 @@
             </div>
           </div>
           <div class="collapse bg-base-200 collapse-arrow">
-            <input type="checkbox" />
+            <input type="checkbox" bind:checked={sections["project"]} />
             <div class="collapse-title text-xl font-medium">Projects</div>
             <div class="collapse-content">
               <label for="Name">Project Title: </label><input
@@ -369,7 +351,7 @@
             </div>
           </div>
           <div class="collapse bg-base-200 collapse-arrow">
-            <input type="checkbox" />
+            <input type="checkbox" bind:checked={sections["education"]} />
             <div class="collapse-title text-xl font-medium">Education</div>
             <div class="collapse-content">
               <label for="Name">Degree: </label><input
@@ -492,19 +474,44 @@
     </div>
   </div>
   <div class="divider lg:divider-horizontal" />
-  <div
-    class="grid flex-grow h-32 card bg-base-300 rounded-box place-items-center"
-  >
-    <div class="text-center">Right Section</div>
-    {#if headerAccOpen}
-      WORK
-    {/if}
-
+  <div class="grid flex-grow h-50 w-20 card bg-base-300 rounded-box">
+    <div class="h-30" id="right-accordion">
+      <div class="text-center">Right Section</div>
+      <div class="right-container mt-5">
+        ...
+        {#if sections["header"]}
+          {helper["header"]}
+          <h1>HELLOW</h1>
+        {/if}
+        {#if sections["summary"]}
+          {helper["summary"]}
+          <h1>HELLOW</h1>
+        {/if}
+        {#if sections["skill"]}
+          {helper["skill"]}
+          <h1>HELLOW</h1>
+        {/if}
+        {#if sections["experience"]}
+          {helper["experience"]}
+          <h1>HELLOW</h1>
+        {/if}
+        {#if sections["project"]}
+          {helper["project"]}
+          <h1>HELLOW</h1>
+        {/if}
+        {#if sections["education"]}
+          {helper["education"]}
+          <h1>HELLOW</h1>
+        {/if}
+      </div>
+      <!--     
     <button
-      class="btn btn-primary"
+      class="btn btn-primary mt-10"
       onclick="window.print(document.getElementById('leftSideBar').innerHTML);"
       >Print div section</button
-    >
+    > 
+  -->
+    </div>
   </div>
 </div>
 
@@ -550,5 +557,10 @@
     font-weight: bolder;
     margin: 3px 0 0 20px;
     font-size: 15pt;
+  }
+  .right-container {
+    background: red;
+    width: 90%;
+    margin-top: -80px;
   }
 </style>
