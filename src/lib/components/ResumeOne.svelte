@@ -59,7 +59,7 @@
   };
 
   // HEADER CHECKER
-  let header_condition = {
+  let resumeFields = {
     name: false,
   };
   function handleFocus() {
