@@ -61,6 +61,22 @@
   // HEADER CHECKER
   let resumeFields = {
     name: false,
+    role: false,
+    socials: false,
+    summary_description: false,
+    skills: false,
+    job_title: false,
+    job_type: false,
+    job_date: false,
+    job_tech: false,
+    job_description: false,
+    project_title: false,
+    project_date: false,
+    project_tech: false,
+    project_description: false,
+    education_degree: false,
+    education_uni_name: false,
+    education_place: false,
   };
   function handleFocus() {
     console.log("WORKING");
