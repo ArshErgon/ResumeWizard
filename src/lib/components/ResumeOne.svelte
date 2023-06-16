@@ -102,6 +102,7 @@
     let newJob = { ...job };
     newJob.title = titleCase(newJob.title);
     newJob.type = titleCase(newJob.type);
+    newJob.date = titleCase(newJon.date);
     newJob.description = replaceAsterisks(newJob.description);
     work_experience_list = [...work_experience_list, newJob];
     if (!hasEditWork) {
@@ -121,6 +122,7 @@
     newProject.title = titleCase(newProject.title);
     newProject.description = replaceAsterisks(newProject.description);
     newProject.tech = replaceAsterisks(newProject.tech);
+    newProject.date = titleCase(newProject.date);
     project_list = [...project_list, newProject];
     if (!hasEditProject) {
       project_list.shift();
