@@ -184,8 +184,8 @@
             type="text"
             placeholder={header.name}
             class="input input-bordered input-primary w-full w-100"
-            on:focus={() => (header_condition.name = true)}
-            on:blur={() => (header_condition.name = false)}
+            on:focus={() => (resumeFields.name = true)}
+            on:blur={() => (resumeFields.name = false)}
             on:input={(event) => {
               if (event.target.value) {
                 header.name = event.target.value;
@@ -197,6 +197,8 @@
             type="text"
             placeholder={header.role}
             class="input input-bordered input-primary w-full w-100"
+            on:focus={() => (resumeFields.role = true)}
+            on:blur={() => (resumeFields.role = false)}
             on:input={(event) => {
               if (event.target.value) {
                 header.role = event.target.value;
@@ -208,6 +210,8 @@
             type="text"
             placeholder={header.social}
             class="input input-bordered input-primary w-full w-100"
+            on:focus={() => (resumeFields.socials = true)}
+            on:blur={() => (resumeFields.socials = false)}
             on:input={(event) => {
               if (event.target.value) {
                 header.social = event.target.value;
@@ -224,6 +228,8 @@
               class="textarea textarea-primary w-full w-100"
               placeholder={summary_description}
               rows="5"
+              on:focus={() => (resumeFields.summary_description = true)}
+              on:blur={() => (resumeFields.summary_description = false)}
               on:input={(event) => {
                 if (event.target.value) {
                   summary_description = event.target.value;
@@ -239,6 +245,8 @@
                 type="text"
                 placeholder={skills}
                 class="input input-bordered input-primary w-full w-100"
+                on:focus={() => (resumeFields.skills = true)}
+                on:blur={() => (resumeFields.skills = false)}
                 on:input={(event) => {
                   if (event.target.value) {
                     skills = event.target.value;
@@ -258,6 +266,8 @@
                 type="text"
                 class="input input-bordered input-primary w-full w-100"
                 bind:value={job.title}
+                on:focus={() => (resumeFields.job_title = true)}
+                on:blur={() => (resumeFields.job_title = false)}
                 on:input={(event) => {
                   if (event.target.value) {
                     job.title = event.target.value;
@@ -269,6 +279,8 @@
                 type="text"
                 class="input input-bordered input-primary w-full w-100"
                 bind:value={job.type}
+                on:focus={() => (resumeFields.job_type = true)}
+                on:blur={() => (resumeFields.job_type = false)}
                 on:input={(event) => {
                   if (event.target.value) {
                     job.type = event.target.value;
@@ -280,6 +292,8 @@
                 type="text"
                 class="input input-bordered input-primary w-full w-100"
                 bind:value={job.date}
+                on:focus={() => (resumeFields.job_date = true)}
+                on:blur={() => (resumeFields.job_date = false)}
                 on:input={(event) => {
                   if (event.target.value) {
                     job.date = event.target.value;
@@ -291,6 +305,8 @@
                 type="text"
                 class="input input-bordered input-primary w-full w-100"
                 bind:value={job.tech}
+                on:focus={() => (resumeFields.job_tech = true)}
+                on:blur={() => (resumeFields.job_tech = false)}
                 on:input={(event) => {
                   if (event.target.value) {
                     job.tech = event.target.value;
@@ -303,6 +319,8 @@
                 row="3"
                 class="input input-bordered input-primary w-full w-100 w-full w-100"
                 bind:value={job.description}
+                on:focus={() => (resumeFields.job_description = true)}
+                on:blur={() => (resumeFields.job_description = false)}
                 on:input={(event) => {
                   if (event.target.value) {
                     job.description = event.target.value;
@@ -322,6 +340,8 @@
                 type="text"
                 class="input input-bordered input-primary w-full w-100"
                 bind:value={projects.title}
+                on:focus={() => (resumeFields.project_title = true)}
+                on:blur={() => (resumeFields.project_title = false)}
                 on:input={(event) => {
                   if (event.target.value) {
                     projects.title = event.target.value;
@@ -333,6 +353,8 @@
                 type="text"
                 class="input input-bordered input-primary w-full w-100"
                 bind:value={projects.date}
+                on:focus={() => (resumeFields.project_date = true)}
+                on:blur={() => (resumeFields.project_date = false)}
                 on:input={(event) => {
                   if (event.target.value) {
                     projects.date = event.target.value;
@@ -344,6 +366,8 @@
                 type="text"
                 class="input input-bordered input-primary w-full w-100"
                 bind:value={projects.tech}
+                on:focus={() => (resumeFields.project_tech = true)}
+                on:blur={() => (resumeFields.project_tech = false)}
                 on:input={(event) => {
                   if (event.target.value) {
                     projects.tech = event.target.value;
@@ -355,6 +379,8 @@
                 class="input input-bordered input-primary w-full w-100"
                 rows="5"
                 bind:value={projects.description}
+                on:focus={() => (resumeFields.project_description = true)}
+                on:blur={() => (resumeFields.project_description = false)}
                 on:input={(event) => {
                   if (event.target.value) {
                     projects.description = event.target.value;
@@ -374,6 +400,8 @@
                 type="text"
                 class="input input-bordered input-primary w-full w-100"
                 bind:value={education.degree}
+                on:focus={() => (resumeFields.education_degree = true)}
+                on:blur={() => (resumeFields.education_degree = false)}
                 on:input={(event) => {
                   if (event.target.value) {
                     education.degree = event.target.value;
@@ -396,6 +424,8 @@
                 type="text"
                 class="input input-bordered input-primary w-full w-100"
                 bind:value={education.place}
+                on:focus={() => (resumeFields.education_place = true)}
+                on:blur={() => (resumeFields.education_place = false)}
                 on:input={(event) => {
                   if (event.target.value) {
                     education.place = event.target.value;
