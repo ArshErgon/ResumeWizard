@@ -166,7 +166,8 @@
             type="text"
             placeholder={header.name}
             class="input input-bordered input-primary w-full w-100"
-            on:focus={handleFocus}
+            on:focus={() => (header_condition.name = true)}
+            on:blur={() => (header_condition.name = false)}
             on:input={(event) => {
               if (event.target.value) {
                 header.name = event.target.value;
