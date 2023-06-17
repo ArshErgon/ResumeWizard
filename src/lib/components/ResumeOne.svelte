@@ -168,6 +168,15 @@
     education["university"] = "";
     education["place"] = "";
   }
+
+  // reactive elements
+  $: {
+    header.name = titleCase(header.name);
+    header.role = titleCase(header.role);
+    summary_description = replaceAsterisks(summary_description);
+    skills = replaceAsterisks(skills);
+    skills = titleCase(skills);
+  };
 </script>
 
 <div class="flex flex-col w-full lg:flex-row" id="main_view">
