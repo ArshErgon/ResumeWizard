@@ -91,7 +91,7 @@
     }
   }
   onMount(() => {
-    const inputFields = document.querySelectorAll('input, textarea');
+    const inputFields = document.querySelectorAll("input, textarea");
     inputFields.forEach((input) => {
       input.addEventListener("focus", handleFields);
     });
@@ -117,7 +117,6 @@
       description: "• Small points description",
     },
   ];
-
 
   let education_list = [
     {
@@ -291,7 +290,8 @@
                 class="input input-bordered input-primary w-full w-100"
                 bind:value={job.title}
                 on:focus={() =>
-                  (resumeFields.job_title = true && nowPresent.push("job_title"))}
+                  (resumeFields.job_title =
+                    true && nowPresent.push("job_title"))}
                 on:input={(event) => {
                   if (event.target.value) {
                     job.title = event.target.value;
@@ -554,31 +554,30 @@
     </div>
   </div>
   <div class="divider lg:divider-horizontal" />
-    <div class="grid flex-grow h-50 w-20 card bg-base-300 rounded-box">
-      <div class="h-30" id="right-accordion">
-        <div class="text-center pt-4">Editing Section</div>
-          <div class="mt-5">
-            {#if sections["header"]}
-             <h1
+  <div class="grid flex-grow h-50 w-20 card bg-base-300 rounded-box">
+    <div class="h-30" id="right-accordion">
+      <div class="text-center pt-4">Editing Section</div>
+      <div class="mt-5">
+        {#if sections["header"]}
+          <h1
             class="font-semibold font-white"
             style="color: #A6ADBA; border-bottom: 1px solid #A6ADBA;"
-            >
+          >
             {helper["header"]}
-            </h1>
-          
-            {#if resumeFields.name}
-              <div id="right-sidebar-name">
-                <em>Pro tip: You can change the color and size of your name.</em
-                >
-                <p class="ml-5 mt-3"><b>Name:</b> {header.name}</p>
-              </div>
+          </h1>
+
+          {#if resumeFields.name}
+            <div id="right-sidebar-name">
+              <em>Pro tip: You can change the color and size of your name.</em>
+              <p class="ml-5 mt-3"><b>Name:</b> {header.name}</p>
+            </div>
           {:else if resumeFields.role}
             <p class="ml-5 mt-3"><b>Role:</b> {header.role}</p>
           {:else if resumeFields.socials}
             <p class="ml-5 mt-3"><b>Socials:</b> {header.social}</p>
           {:else}
-          <em>Add Some GOOD HEADERS</em>
-        {/if}
+            <em>Add Some GOOD HEADERS</em>
+          {/if}
         {/if}
 
         {#if sections["summary"]}
@@ -682,18 +681,31 @@
             <em>Add good education details</em>
           {/if}
         {/if}
-       </div>
-       <div class="flex flex-col items-center justify-center">
-      <button
-        class="btn btn-secondary mt-10 text-center justify-center"
-        onclick="window.print(document.getElementById('leftSideBar').innerHTML);"
-        >Print/Save</button
-      ></div>
+      </div>
+      <div class="flex flex-col items-center justify-center">
+        <button
+          class="btn btn-secondary mt-10 text-center justify-center"
+          onclick="window.print(document.getElementById('leftSideBar').innerHTML);"
+          >Print/Save</button
+        >
+      </div>
     </div>
   </div>
   <div class="btm-nav" id="btm-nav">
     <button class="text-info active" id="btm-nav-button">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-5 w-5"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        ><path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+        /></svg
+      >
     </button>
   </div>
 </div>
@@ -704,18 +716,17 @@
     display: flex;
     margin: 0px auto;
     border-top-left-radius: 30px;
-    border-top-right-radius: 30px ;
+    border-top-right-radius: 30px;
   }
   #btm-nav-button {
     border-top-left-radius: 30px;
-    border-top-right-radius: 30px ;
-
+    border-top-right-radius: 30px;
   }
 
   em {
     margin: 15px 15px 0 15px;
     padding: 0px 0px 3px 0px;
-    border-bottom: 1px solid #f5D300;
+    border-bottom: 1px solid #f5d300;
   }
   input {
     margin-bottom: 10px;
