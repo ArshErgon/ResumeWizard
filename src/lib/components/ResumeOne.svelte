@@ -763,7 +763,8 @@
 
   #em-div {
     display: flex;
-    justify-content: center;
+    width: 380px;
+    margin: 0px auto;
   }
 
   em {
