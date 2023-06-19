@@ -2,6 +2,7 @@
   // @ts-nocheck
 
   import { titleCase, replaceAsterisks } from "./helper.js";
+  import { onMount } from "svelte";
 
   let header = {
     name: "John Bose",
@@ -59,6 +60,7 @@
   };
 
   // HEADER CHECKER
+  let nowPresent = [];
   let resumeFields = {
     name: false,
     role: false,
@@ -78,9 +80,22 @@
     education_uni_name: false,
     education_place: false,
   };
-  function handleFocus() {
-    console.log("WORKING");
+  function handleFields() {
+    if (nowPresent.length == 2) {
+      let [first, last] = [nowPresent.shift(), nowPresent[0]];
+      if (first != last) {
+        resumeFields[first] = false;
+      } else {
+        nowPresent.shift();
+      }
+    }
   }
+  onMount(() => {
+    const inputFields = document.querySelectorAll('input, textarea');
+    inputFields.forEach((input) => {
+      input.addEventListener("focus", handleFields);
+    });
+  });
 
   // for work_experience dummyData
   let work_experience_list = [
@@ -103,7 +118,6 @@
     },
   ];
 
-  //
 
   let education_list = [
     {
@@ -118,7 +132,7 @@
     let newJob = { ...job };
     newJob.title = titleCase(newJob.title);
     newJob.type = titleCase(newJob.type);
-    newJob.date = titleCase(newJon.date);
+    newJob.date = titleCase(newJob.date);
     newJob.description = replaceAsterisks(newJob.description);
     work_experience_list = [...work_experience_list, newJob];
     if (!hasEditWork) {
@@ -176,7 +190,7 @@
     summary_description = replaceAsterisks(summary_description);
     skills = replaceAsterisks(skills);
     skills = titleCase(skills);
-  };
+  }
 </script>
 
 <div class="flex flex-col w-full lg:flex-row" id="main_view">
@@ -193,8 +207,8 @@
             type="text"
             placeholder={header.name}
             class="input input-bordered input-primary w-full w-100"
-            on:focus={() => (resumeFields.name = true)}
-            on:blur={() => (resumeFields.name = false)}
+            on:focus={() =>
+              (resumeFields.name = true && nowPresent.push("name"))}
             on:input={(event) => {
               if (event.target.value) {
                 header.name = event.target.value;
@@ -206,8 +220,8 @@
             type="text"
             placeholder={header.role}
             class="input input-bordered input-primary w-full w-100"
-            on:focus={() => (resumeFields.role = true)}
-            on:blur={() => (resumeFields.role = false)}
+            on:focus={() =>
+              (resumeFields.role = true && nowPresent.push("role"))}
             on:input={(event) => {
               if (event.target.value) {
                 header.role = event.target.value;
@@ -219,8 +233,8 @@
             type="text"
             placeholder={header.social}
             class="input input-bordered input-primary w-full w-100"
-            on:focus={() => (resumeFields.socials = true)}
-            on:blur={() => (resumeFields.socials = false)}
+            on:focus={() =>
+              (resumeFields.socials = true && nowPresent.push("socials"))}
             on:input={(event) => {
               if (event.target.value) {
                 header.social = event.target.value;
@@ -237,8 +251,9 @@
               class="textarea textarea-primary w-full w-100"
               placeholder={summary_description}
               rows="5"
-              on:focus={() => (resumeFields.summary_description = true)}
-              on:blur={() => (resumeFields.summary_description = false)}
+              on:focus={() =>
+                (resumeFields.summary_description =
+                  true && nowPresent.push("summary_description"))}
               on:input={(event) => {
                 if (event.target.value) {
                   summary_description = event.target.value;
@@ -254,8 +269,8 @@
                 type="text"
                 placeholder={skills}
                 class="input input-bordered input-primary w-full w-100"
-                on:focus={() => (resumeFields.skills = true)}
-                on:blur={() => (resumeFields.skills = false)}
+                on:focus={() =>
+                  (resumeFields.skills = true && nowPresent.push("skills"))}
                 on:input={(event) => {
                   if (event.target.value) {
                     skills = event.target.value;
@@ -275,8 +290,8 @@
                 type="text"
                 class="input input-bordered input-primary w-full w-100"
                 bind:value={job.title}
-                on:focus={() => (resumeFields.job_title = true)}
-                on:blur={() => (resumeFields.job_title = false)}
+                on:focus={() =>
+                  (resumeFields.job_title = true && nowPresent.push("job_title"))}
                 on:input={(event) => {
                   if (event.target.value) {
                     job.title = event.target.value;
@@ -288,8 +303,8 @@
                 type="text"
                 class="input input-bordered input-primary w-full w-100"
                 bind:value={job.type}
-                on:focus={() => (resumeFields.job_type = true)}
-                on:blur={() => (resumeFields.job_type = false)}
+                on:focus={() =>
+                  (resumeFields.job_type = true && nowPresent.push("job_type"))}
                 on:input={(event) => {
                   if (event.target.value) {
                     job.type = event.target.value;
@@ -301,8 +316,8 @@
                 type="text"
                 class="input input-bordered input-primary w-full w-100"
                 bind:value={job.date}
-                on:focus={() => (resumeFields.job_date = true)}
-                on:blur={() => (resumeFields.job_date = false)}
+                on:focus={() =>
+                  (resumeFields.job_date = true && nowPresent.push("job_date"))}
                 on:input={(event) => {
                   if (event.target.value) {
                     job.date = event.target.value;
@@ -314,8 +329,8 @@
                 type="text"
                 class="input input-bordered input-primary w-full w-100"
                 bind:value={job.tech}
-                on:focus={() => (resumeFields.job_tech = true)}
-                on:blur={() => (resumeFields.job_tech = false)}
+                on:focus={() =>
+                  (resumeFields.job_tech = true && nowPresent.push("job_tech"))}
                 on:input={(event) => {
                   if (event.target.value) {
                     job.tech = event.target.value;
@@ -326,10 +341,11 @@
               <label for="Name">Job Description: </label><textarea
                 type="text"
                 row="3"
-                class="input input-bordered input-primary w-full w-100 w-full w-100"
+                class="input input-bordered input-primary w-100 w-full w-100"
                 bind:value={job.description}
-                on:focus={() => (resumeFields.job_description = true)}
-                on:blur={() => (resumeFields.job_description = false)}
+                on:focus={() =>
+                  (resumeFields.job_description =
+                    true && nowPresent.push("job_description"))}
                 on:input={(event) => {
                   if (event.target.value) {
                     job.description = event.target.value;
@@ -349,8 +365,9 @@
                 type="text"
                 class="input input-bordered input-primary w-full w-100"
                 bind:value={projects.title}
-                on:focus={() => (resumeFields.project_title = true)}
-                on:blur={() => (resumeFields.project_title = false)}
+                on:focus={() =>
+                  (resumeFields.project_title =
+                    true && nowPresent.push("project_title"))}
                 on:input={(event) => {
                   if (event.target.value) {
                     projects.title = event.target.value;
@@ -362,8 +379,9 @@
                 type="text"
                 class="input input-bordered input-primary w-full w-100"
                 bind:value={projects.date}
-                on:focus={() => (resumeFields.project_date = true)}
-                on:blur={() => (resumeFields.project_date = false)}
+                on:focus={() =>
+                  (resumeFields.project_date =
+                    true && nowPresent.push("project_date"))}
                 on:input={(event) => {
                   if (event.target.value) {
                     projects.date = event.target.value;
@@ -375,8 +393,9 @@
                 type="text"
                 class="input input-bordered input-primary w-full w-100"
                 bind:value={projects.tech}
-                on:focus={() => (resumeFields.project_tech = true)}
-                on:blur={() => (resumeFields.project_tech = false)}
+                on:focus={() =>
+                  (resumeFields.project_tech =
+                    true && nowPresent.push("project_tech"))}
                 on:input={(event) => {
                   if (event.target.value) {
                     projects.tech = event.target.value;
@@ -388,8 +407,9 @@
                 class="input input-bordered input-primary w-full w-100"
                 rows="5"
                 bind:value={projects.description}
-                on:focus={() => (resumeFields.project_description = true)}
-                on:blur={() => (resumeFields.project_description = false)}
+                on:focus={() =>
+                  (resumeFields.project_description =
+                    true && nowPresent.push("project_description"))}
                 on:input={(event) => {
                   if (event.target.value) {
                     projects.description = event.target.value;
@@ -409,8 +429,9 @@
                 type="text"
                 class="input input-bordered input-primary w-full w-100"
                 bind:value={education.degree}
-                on:focus={() => (resumeFields.education_degree = true)}
-                on:blur={() => (resumeFields.education_degree = false)}
+                on:focus={() =>
+                  (resumeFields.education_degree =
+                    true && nowPresent.push("education_degree"))}
                 on:input={(event) => {
                   if (event.target.value) {
                     education.degree = event.target.value;
@@ -422,8 +443,9 @@
                 type="text"
                 class="input input-bordered input-primary w-full w-100"
                 bind:value={education.university}
-                on:focus={() => (resumeFields.education_uni_name = true)}
-                on:blur={() => (resumeFields.education_uni_name = false)}
+                on:focus={() =>
+                  (resumeFields.education_uni_name =
+                    true && nowPresent.push("education_uni_name"))}
                 on:input={(event) => {
                   if (event.target.value) {
                     education.university = event.target.value;
@@ -435,8 +457,9 @@
                 type="text"
                 class="input input-bordered input-primary w-full w-100"
                 bind:value={education.place}
-                on:focus={() => (resumeFields.education_place = true)}
-                on:blur={() => (resumeFields.education_place = false)}
+                on:focus={() =>
+                  (resumeFields.education_place =
+                    true && nowPresent.push("education_place"))}
                 on:input={(event) => {
                   if (event.target.value) {
                     education.place = event.target.value;
@@ -531,29 +554,32 @@
     </div>
   </div>
   <div class="divider lg:divider-horizontal" />
-  <div class="grid flex-grow h-50 w-20 card bg-base-300 rounded-box">
-    <div class="h-30" id="right-accordion">
-      <div class="text-center pt-4">Editing Section</div>
-      <div class="right-container mt-5">
-        {#if sections["header"]}
-          <h1
+    <div class="grid flex-grow h-50 w-20 card bg-base-300 rounded-box">
+      <div class="h-30" id="right-accordion">
+        <div class="text-center pt-4">Editing Section</div>
+          <div class="mt-5">
+            {#if sections["header"]}
+             <h1
             class="font-semibold font-white"
             style="color: #A6ADBA; border-bottom: 1px solid #A6ADBA;"
-          >
+            >
             {helper["header"]}
-          </h1>
-          {#if resumeFields.name}
-            <div>
-              <em>Pro tip: You can change the color and size of your name.</em>
-            </div>
-            <p class="ml-5 mt-3"><b>Name:</b> {header.name}</p>
+            </h1>
+          
+            {#if resumeFields.name}
+              <div id="right-sidebar-name">
+                <em>Pro tip: You can change the color and size of your name.</em
+                >
+                <p class="ml-5 mt-3"><b>Name:</b> {header.name}</p>
+                <input type="text" bind:value={header.name} />
+              </div>
+          {:else if resumeFields.role}
+            <p class="ml-5 mt-3"><b>Role:</b> {header.role}</p>
           {:else if resumeFields.socials}
             <p class="ml-5 mt-3"><b>Socials:</b> {header.social}</p>
-          {:else if resumeFields.role}
-            <p class="ml-5 mt-3"><b>Socials:</b> {header.role}</p>
           {:else}
-            <em>Add Some GOOD HEADERS</em>
-          {/if}
+          <em>Add Some GOOD HEADERS</em>
+        {/if}
         {/if}
 
         {#if sections["summary"]}
@@ -568,17 +594,15 @@
             <p class="ml-5 mt-3">
               <b>Description:</b>
               <textarea
-              class="textarea textarea-primary w-full w-100"
-              placeholder={summary_description}
-              rows="5"
-              on:focus={() => (resumeFields.summary_description = true)}
-              on:blur={() => (resumeFields.summary_description = false)}
-              on:input={(event) => {
-                if (event.target.value) {
-                  summary_description = event.target.value;
-                }
-              }}
-            />
+                class="textarea textarea-primary w-full w-100"
+                placeholder={summary_description}
+                rows="5"
+                on:input={(event) => {
+                  if (event.target.value) {
+                    summary_description = event.target.value;
+                  }
+                }}
+              />
             </p>
           {:else}
             <p class="ml-5 mt-3">ADD IDEAS</p>
@@ -594,7 +618,7 @@
           </h1>
           {#if resumeFields.skills};
             <em>Pro tip: You can change the color and size of your name.</em>
-            <p class="ml-5 mt-3"><b>Name:</b> {header.name}</p>
+            <p class="ml-5 mt-3"><b>Skills:</b> {skills}</p>
           {:else}
             <em>Add Some GOOD HEADERS</em>
           {/if}
@@ -608,17 +632,17 @@
             {helper["experience"]}
           </h1>
           {#if resumeFields.job_title}
-          <em>Pro tip</em>
+            <em>Pro tip JT</em>
           {:else if resumeFields.job_type}
-          <em>Pro tip</em>
+            <em>Pro tip JTY</em>
           {:else if resumeFields.job_date}
-          <em>Pro tip</em>
+            <em>Pro tip JD</em>
           {:else if resumeFields.job_tech}
-          <em>Pro tip</em>
+            <em>Pro tip JTH</em>
           {:else if resumeFields.job_description}
-          <em>Pro tip</em>
+            <em>Pro tip JDPT</em>
           {:else}
-          <em>Add SOME GOOD JOB TITLE</em>
+            <em>Add SOME GOOD JOB TITLE</em>
           {/if}
         {/if}
 
@@ -630,15 +654,15 @@
             {helper["project"]}
           </h1>
           {#if resumeFields.project_title}
-          <em>Pro tip</em>
+            <em>Pro tip PT</em>
           {:else if resumeFields.project_date}
-          <em>Pro tip</em>
+            <em>Pro tip PD</em>
           {:else if resumeFields.project_tech}
-          <em>Pro tip</em>
+            <em>Pro tip PTH</em>
           {:else if resumeFields.project_description}
-          <em>Pro tip</em>
+            <em>Pro tip PDS</em>
           {:else}
-          <em>ADD GOOD EXPERIENCE DESCRIPTION</em>
+            <em>ADD GOOD EXPERIENCE DESCRIPTION</em>
           {/if}
         {/if}
 
@@ -650,22 +674,22 @@
             {helper["education"]}
           </h1>
           {#if resumeFields.education_degree}
-          <em>Pro tip</em>
+            <em>Pro tip D</em>
           {:else if resumeFields.education_uni_name}
-          <em>Pro tip</em>
+            <em>Pro tip UND</em>
           {:else if resumeFields.education_place}
-          <em>Pro tip</em>
+            <em>Pro tip DP</em>
           {:else}
-          <em>Add good education details</em>
+            <em>Add good education details</em>
           {/if}
         {/if}
-      </div>
-
+       </div>
+       <div class="flex flex-col items-center justify-center">
       <button
-        class="btn btn-primary mt-10 ml-10"
+        class="btn btn-secondary mt-10 text-center justify-center"
         onclick="window.print(document.getElementById('leftSideBar').innerHTML);"
-        >Print div section</button
-      >
+        >Print/Save</button
+      ></div>
     </div>
   </div>
 </div>
@@ -673,7 +697,6 @@
 <style>
   em {
     margin: 15px 15px 0 15px;
-    background: red;
   }
   input {
     margin-bottom: 10px;
