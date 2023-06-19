@@ -567,16 +567,18 @@
           </h1>
 
           {#if resumeFields.name}
-            <div id="right-sidebar-name">
+            <div id="em-div">
               <em>Pro tip: You can change the color and size of your name.</em>
-              <p class="ml-5 mt-3"><b>Name:</b> {header.name}</p>
             </div>
+            <p class="ml-5 mt-3"><b>Name:</b> {header.name}</p>
           {:else if resumeFields.role}
             <p class="ml-5 mt-3"><b>Role:</b> {header.role}</p>
           {:else if resumeFields.socials}
             <p class="ml-5 mt-3"><b>Socials:</b> {header.social}</p>
           {:else}
-            <em>Add Some GOOD HEADERS</em>
+            <div id="em-div">
+              <em>Add Some GOOD HEADERS</em>
+            </div>
           {/if}
         {/if}
 
@@ -588,7 +590,9 @@
             {helper["summary"]}
           </h1>
           {#if resumeFields.summary_description}
-            <em>Pro tip:</em>
+            <div id="em-div">
+              <em>Pro tip:</em>
+            </div>
             <p class="ml-5 mt-3">
               <b>Description:</b>
               <textarea
@@ -615,10 +619,14 @@
             {helper["skill"]}
           </h1>
           {#if resumeFields.skills};
-            <em>Pro tip: You can change the color and size of your name.</em>
+            <div id="em-div">
+              <em>Pro tip: You can change the color and size of your name.</em>
+            </div>
             <p class="ml-5 mt-3"><b>Skills:</b> {skills}</p>
           {:else}
-            <em>Add Some GOOD HEADERS</em>
+            <div id="em-div">
+              <em>Add Some GOOD HEADERS</em>
+            </div>
           {/if}
         {/if}
 
@@ -630,17 +638,29 @@
             {helper["experience"]}
           </h1>
           {#if resumeFields.job_title}
-            <em>Pro tip JT</em>
+            <div id="em-div">
+              <em>Pro tip JT</em>
+            </div>
           {:else if resumeFields.job_type}
-            <em>Pro tip JTY</em>
+            <div id="em-div">
+              <em>Pro tip JTY</em>
+            </div>
           {:else if resumeFields.job_date}
-            <em>Pro tip JD</em>
+            <div id="em-div">
+              <em>Pro tip JD</em>
+            </div>
           {:else if resumeFields.job_tech}
-            <em>Pro tip JTH</em>
+            <div id="em-div">
+              <em>Pro tip JTH</em>
+            </div>
           {:else if resumeFields.job_description}
-            <em>Pro tip JDPT</em>
+            <div id="em-div">
+              <em>Pro tip JDPT</em>
+            </div>
           {:else}
-            <em>Add SOME GOOD JOB TITLE</em>
+            <div id="em-div">
+              <em>Add SOME GOOD JOB TITLE</em>
+            </div>
           {/if}
         {/if}
 
@@ -652,15 +672,25 @@
             {helper["project"]}
           </h1>
           {#if resumeFields.project_title}
-            <em>Pro tip PT</em>
+            <div id="em-div">
+              <em>Pro tip PT</em>
+            </div>
           {:else if resumeFields.project_date}
-            <em>Pro tip PD</em>
+            <div id="em-div">
+              <em>Pro tip PD</em>
+            </div>
           {:else if resumeFields.project_tech}
-            <em>Pro tip PTH</em>
+            <div id="em-div">
+              <em>Pro tip PTH</em>
+            </div>
           {:else if resumeFields.project_description}
-            <em>Pro tip PDS</em>
+            <div id="em-div">
+              <em>Pro tip PDS</em>
+            </div>
           {:else}
-            <em>ADD GOOD EXPERIENCE DESCRIPTION</em>
+            <div id="em-div">
+              <em>ADD GOOD EXPERIENCE DESCRIPTION</em>
+            </div>
           {/if}
         {/if}
 
@@ -672,13 +702,21 @@
             {helper["education"]}
           </h1>
           {#if resumeFields.education_degree}
-            <em>Pro tip D</em>
+            <div id="em-div">
+              <em>Pro tip D</em>
+            </div>
           {:else if resumeFields.education_uni_name}
-            <em>Pro tip UND</em>
+            <div id="em-div">
+              <em>Pro tip UND</em>
+            </div>
           {:else if resumeFields.education_place}
-            <em>Pro tip DP</em>
+            <div id="em-div">
+              <em>Pro tip DP</em>
+            </div>
           {:else}
-            <em>Add good education details</em>
+            <div id="em-div">
+              <em>Add good education details</em>
+            </div>
           {/if}
         {/if}
       </div>
@@ -723,8 +761,13 @@
     border-top-right-radius: 30px;
   }
 
+  #em-div {
+    display: flex;
+    justify-content: center;
+  }
+
   em {
-    margin: 15px 15px 0 15px;
+    margin: 10px 15px 0 15px;
     padding: 0px 0px 3px 0px;
     border-bottom: 1px solid #f5d300;
   }
