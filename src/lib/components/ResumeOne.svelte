@@ -946,7 +946,9 @@
               />
             </div>
           {:else}
-            <p class="ml-5 mt-3">ADD IDEAS</p>
+          <div id="em-div">
+            <em class="mt-5">You know you can use css html properties inside textareas?</em>
+            </div>
           {/if}
         {/if}
 
@@ -1330,7 +1332,7 @@
             </div>
           {:else if resumeFields.job_description}
             <div id="em-div">
-              <em>Job Description</em>
+              <em>De`scription</em>
             </div>
 
             <div class="form-control w-30 ml-3 mr-10">
