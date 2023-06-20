@@ -419,6 +419,20 @@
                 }}
               />
               <br />
+              <label for="Name">Link: </label><input
+                type="text"
+                class="input input-bordered input-primary w-full w-100"
+                bind:value={projects.link}
+                on:focus={() =>
+                  (resumeFields.project_link =
+                    true && nowPresent.push("project_link"))}
+                on:input={(event) => {
+                  if (event.target.value) {
+                    projects.link = event.target.value;
+                  }
+                }}
+              />
+              <br />
               <label for="Name">Tech: </label><input
                 type="text"
                 class="input input-bordered input-primary w-full w-100"
