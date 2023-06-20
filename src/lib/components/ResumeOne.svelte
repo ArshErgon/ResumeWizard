@@ -60,37 +60,37 @@
     const textElement = document.getElementById(elementId);
     textElement.style.fontSize = `${value}px`;
   }
-// to change the fontColor
+  // to change the fontColor
   let fontColor = "";
   function handleColorChange(elementId, value) {
     const textElement = document.getElementById(elementId);
     textElement.style.color = `${value}`;
   }
-// the top margin
+  // the top margin
   let marginTop = 0;
   function handleMarginTop(elementId, value) {
     const textElement = document.getElementById(elementId);
     textElement.style.marginTop = `${value}px`;
   }
-// the bottom margin
+  // the bottom margin
   let marginBottom = 0;
   function handleMarginBottom(elementId, value) {
     const textElement = document.getElementById(elementId);
     textElement.style.marginBottom = `${value}px`;
   }
-// the fontFamily using googleFonts
-let fontFamily = {
-  newOne: "'Major Mono Display', monospace",
-  newTwo: "'Roboto', sans-serif",
-  newThree: "'Lato', sans-serif",
-  newFour: "'Nunito', sans-serif",
-}
-let selectedFont = "Pick your font";
-function handleFontSelection(elementId, value) {
-  const textElement = document.getElementById(elementId);
+  // the fontFamily using googleFonts
+  let fontFamily = {
+    newOne: "'Major Mono Display', monospace",
+    newTwo: "'Roboto', sans-serif",
+    newThree: "'Lato', sans-serif",
+    newFour: "'Nunito', sans-serif",
+  };
+  let selectedFont = "Pick your font";
+  function handleFontSelection(elementId, value) {
+    const textElement = document.getElementById(elementId);
     textElement.style.fontFamily = `${value}`;
     console.log(value);
-}
+  }
   // SECTIONS
   let sections = {
     header: false,
@@ -595,8 +595,16 @@ function handleFontSelection(elementId, value) {
             class="mt-1"
             style="display: flex; justify-content: space-between;"
           >
-            <div class="text-black ml-5 text-[18px]" style="order: 1;" id="project-title">{project.title}</div>
-            <div class="mr-4 text-black" style="order: 2;" id="project-date">{project.date}</div>
+            <div
+              class="text-black ml-5 text-[18px]"
+              style="order: 1;"
+              id="project-title"
+            >
+              {project.title}
+            </div>
+            <div class="mr-4 text-black" style="order: 2;" id="project-date">
+              {project.date}
+            </div>
           </div>
           <div class="text-black ml-5" id="project-link">{project.link}</div>
           <div class="text-black ml-5" id="project_tech_stack">
@@ -611,7 +619,9 @@ function handleFontSelection(elementId, value) {
       <div class="">
         <h1>Education</h1>
         {#each education_list as education}
-          <div class="text-black ml-5 text-bold" id="edu-title"><b>{education.degree}</b></div>
+          <div class="text-black ml-5 text-bold" id="edu-title">
+            <b>{education.degree}</b>
+          </div>
           <div class="text-black ml-5" id="edu-uni">{education.university}</div>
           <div class="text-black ml-5" id="edu-place">{education.place}</div>
         {/each}
@@ -631,20 +641,24 @@ function handleFontSelection(elementId, value) {
             {helper["header"]}
           </h1>
 
-          {#if resumeFields.name}
-            <div id="em-div">
-              <em>Pro tip: You can change the color and size of your name.</em>
-            </div>
-            <br />
+          {#if resumeFields.name}      
+          <div id="em-div">
+            <em>Name</em>
+          </div>      
             <div class="form-control w-30 ml-3 mr-10">
               <label class="label">
                 <span class="label-text">Font</span>
               </label>
-                <select class="select select-secondary w-full max-w-xs" bind:value={selectedFont} on:change={() => handleFontSelection('header-name', selectedFont)}>
-                  {#each Object.keys(fontFamily) as font}
+              <select
+                class="select select-secondary w-full max-w-xs"
+                bind:value={selectedFont}
+                on:change={() =>
+                  handleFontSelection("header-name", selectedFont)}
+              >
+                {#each Object.keys(fontFamily) as font}
                   <option value={fontFamily[font]}>{fontFamily[font]}</option>
-                  {/each}
-                </select>
+                {/each}
+              </select>
             </div>
             <div class="form-control w-30 ml-3 mr-10">
               <label class="label">
@@ -684,16 +698,24 @@ function handleFontSelection(elementId, value) {
               />
             </div>
           {:else if resumeFields.role}
-          <div class="form-control w-30 ml-3 mr-10">
-            <label class="label">
-              <span class="label-text">Font</span>
-            </label>
-              <select class="select select-secondary w-full max-w-xs" bind:value={selectedFont} on:change={() => handleFontSelection("header-role", selectedFont)}>
+          <div id="em-div">
+            <em>Role</em>
+          </div>
+            <div class="form-control w-30 ml-3 mr-10">
+              <label class="label">
+                <span class="label-text">Font</span>
+              </label>
+              <select
+                class="select select-secondary w-full max-w-xs"
+                bind:value={selectedFont}
+                on:change={() =>
+                  handleFontSelection("header-role", selectedFont)}
+              >
                 {#each Object.keys(fontFamily) as font}
-                <option value={fontFamily[font]}>{fontFamily[font]}</option>
+                  <option value={fontFamily[font]}>{fontFamily[font]}</option>
                 {/each}
               </select>
-          </div>
+            </div>
             <div class="form-control w-30 ml-3 mr-10">
               <label class="label">
                 <span class="label-text">Font Size</span>
@@ -758,79 +780,86 @@ function handleFontSelection(elementId, value) {
               />
             </div>
           {:else if resumeFields.socials}
-          <div class="form-control w-30 ml-3 mr-10">
-            <label class="label">
-              <span class="label-text">Font</span>
-            </label>
-              <select class="select select-secondary w-full max-w-xs" bind:value={selectedFont} on:change={() => handleFontSelection("socials", selectedFont)}>
+          <div id="em-div">
+            <em>Socials</em>
+          </div>
+            <div class="form-control w-30 ml-3 mr-10">
+              <label class="label">
+                <span class="label-text">Font</span>
+              </label>
+              <select
+                class="select select-secondary w-full max-w-xs"
+                bind:value={selectedFont}
+                on:change={() => handleFontSelection("socials", selectedFont)}
+              >
                 {#each Object.keys(fontFamily) as font}
-                <option value={fontFamily[font]}>{fontFamily[font]}</option>
+                  <option value={fontFamily[font]}>{fontFamily[font]}</option>
                 {/each}
               </select>
-          </div>
-          <div class="form-control w-30 ml-3 mr-10">
-            <label class="label">
-              <span class="label-text">Font Size</span>
-            </label>
-            <input
-              type="range"
-              min="12"
-              max="40"
-              bind:value={fontSize}
-              class="range"
-              on:input={() => handleFontSize("socials", fontSize)}
-            />
-          </div>
-          <div class="form-control w-30 ml-3 mr-10">
-            <label class="label">
-              <span class="label-text">Font Weight</span>
-            </label>
-            <input
-              type="range"
-              min="100"
-              max="900"
-              bind:value={defaultWeight}
-              class="range"
-              on:input={() => handleWeight("socials", defaultWeight)}
-            />
-          </div>
-          <div class="form-control w-30 ml-3 mr-10">
-            <label class="label">
-              <span class="label-text">Font Color</span>
-            </label>
-            <input
-              type="color"
-              bind:value={fontColor}
-              class="range"
-              on:input={() => handleColorChange("socials", fontColor)}
-            />
-          </div>
-          <div class="form-control w-30 ml-3 mr-10">
-            <label class="label">
-              <span class="label-text">Margin Top</span>
-            </label>
-            <input
-              type="range"
-              min="0"
-              max="30"
-              bind:value={marginTop}
-              class="range"
-              on:input={() => handleMarginTop("socials", marginTop)}
-            />
-          </div>
-          <div class="form-control w-30 ml-3 mr-10">
-            <label class="label">
-              <span class="label-text">Margin Bottom</span>
-            </label>
-            <input
-              type="range"
-              min="0"
-              max="30"
-              bind:value={marginBottom}
-              class="range"
-              on:input={() => handleMarginBottom("socials", marginBottom)}
-            />
-          </div>
+            </div>
+            <div class="form-control w-30 ml-3 mr-10">
+              <label class="label">
+                <span class="label-text">Font Size</span>
+              </label>
+              <input
+                type="range"
+                min="12"
+                max="40"
+                bind:value={fontSize}
+                class="range"
+                on:input={() => handleFontSize("socials", fontSize)}
+              />
+            </div>
+            <div class="form-control w-30 ml-3 mr-10">
+              <label class="label">
+                <span class="label-text">Font Weight</span>
+              </label>
+              <input
+                type="range"
+                min="100"
+                max="900"
+                bind:value={defaultWeight}
+                class="range"
+                on:input={() => handleWeight("socials", defaultWeight)}
+              />
+            </div>
+            <div class="form-control w-30 ml-3 mr-10">
+              <label class="label">
+                <span class="label-text">Font Color</span>
+              </label>
+              <input
+                type="color"
+                bind:value={fontColor}
+                class="range"
+                on:input={() => handleColorChange("socials", fontColor)}
+              />
+            </div>
+            <div class="form-control w-30 ml-3 mr-10">
+              <label class="label">
+                <span class="label-text">Margin Top</span>
+              </label>
+              <input
+                type="range"
+                min="0"
+                max="30"
+                bind:value={marginTop}
+                class="range"
+                on:input={() => handleMarginTop("socials", marginTop)}
+              />
+            </div>
+            <div class="form-control w-30 ml-3 mr-10">
+              <label class="label">
+                <span class="label-text">Margin Bottom</span>
+              </label>
+              <input
+                type="range"
+                min="0"
+                max="30"
+                bind:value={marginBottom}
+                class="range"
+                on:input={() => handleMarginBottom("socials", marginBottom)}
+              />
+            </div>
           {:else}
             <div id="em-div">
               <em>Start filling details so that you can use editing tools</em>
@@ -846,18 +875,23 @@ function handleFontSelection(elementId, value) {
             {helper["summary"]}
           </h1>
           {#if resumeFields.summary_description}
-            <div id="em-div">
-              <em>Pro tip:</em>
-            </div>
+          <div id="em-div">
+            <em>Summary Description</em>
+          </div>
             <div class="form-control w-30 ml-3 mr-10">
               <label class="label">
                 <span class="label-text">Font</span>
               </label>
-                <select class="select select-secondary w-full max-w-xs" bind:value={selectedFont} on:change={() => handleFontSelection("description", selectedFont)}>
-                  {#each Object.keys(fontFamily) as font}
+              <select
+                class="select select-secondary w-full max-w-xs"
+                bind:value={selectedFont}
+                on:change={() =>
+                  handleFontSelection("description", selectedFont)}
+              >
+                {#each Object.keys(fontFamily) as font}
                   <option value={fontFamily[font]}>{fontFamily[font]}</option>
-                  {/each}
-                </select>
+                {/each}
+              </select>
             </div>
             <div class="form-control w-30 ml-3 mr-10">
               <label class="label">
@@ -924,18 +958,22 @@ function handleFontSelection(elementId, value) {
             {helper["skill"]}
           </h1>
           {#if resumeFields.skills};
-            <div id="em-div">
-              <em>Pro tip: You can change the color and size of your name.</em>
-            </div>
+          <div id="em-div">
+            <em>Skills</em>
+          </div>
             <div class="form-control w-30 ml-3 mr-10">
               <label class="label">
                 <span class="label-text">Font</span>
               </label>
-                <select class="select select-secondary w-full max-w-xs" bind:value={selectedFont} on:change={() => handleFontSelection("skill", selectedFont)}>
-                  {#each Object.keys(fontFamily) as font}
+              <select
+                class="select select-secondary w-full max-w-xs"
+                bind:value={selectedFont}
+                on:change={() => handleFontSelection("skill", selectedFont)}
+              >
+                {#each Object.keys(fontFamily) as font}
                   <option value={fontFamily[font]}>{fontFamily[font]}</option>
-                  {/each}
-                </select>
+                {/each}
+              </select>
             </div>
             <div class="form-control w-30 ml-3 mr-10">
               <label class="label">
@@ -991,7 +1029,7 @@ function handleFontSelection(elementId, value) {
             </div>
           {:else}
             <div id="em-div">
-              <em>Add Some GOOD HEADERS</em>
+              <em>Click on fields to start editing</em>
             </div>
           {/if}
         {/if}
@@ -1003,6 +1041,9 @@ function handleFontSelection(elementId, value) {
           >
             {helper["experience"]}
           </h1>
+          <div id="em-div">
+            <em>You need to add experience first to edit them.</em>
+          </div>
           {#if resumeFields.job_title}
             <div id="em-div">
               <em>Job Title</em>
@@ -1011,11 +1052,15 @@ function handleFontSelection(elementId, value) {
               <label class="label">
                 <span class="label-text">Font</span>
               </label>
-                <select class="select select-secondary w-full max-w-xs" bind:value={selectedFont} on:change={() => handleFontSelection("title", selectedFont)}>
-                  {#each Object.keys(fontFamily) as font}
+              <select
+                class="select select-secondary w-full max-w-xs"
+                bind:value={selectedFont}
+                on:change={() => handleFontSelection("title", selectedFont)}
+              >
+                {#each Object.keys(fontFamily) as font}
                   <option value={fontFamily[font]}>{fontFamily[font]}</option>
-                  {/each}
-                </select>
+                {/each}
+              </select>
             </div>
             <div class="form-control w-30 ml-3 mr-10">
               <label class="label">
@@ -1078,11 +1123,15 @@ function handleFontSelection(elementId, value) {
               <label class="label">
                 <span class="label-text">Font</span>
               </label>
-                <select class="select select-secondary w-full max-w-xs" bind:value={selectedFont} on:change={() => handleFontSelection("job-type", selectedFont)}>
-                  {#each Object.keys(fontFamily) as font}
+              <select
+                class="select select-secondary w-full max-w-xs"
+                bind:value={selectedFont}
+                on:change={() => handleFontSelection("job-type", selectedFont)}
+              >
+                {#each Object.keys(fontFamily) as font}
                   <option value={fontFamily[font]}>{fontFamily[font]}</option>
-                  {/each}
-                </select>
+                {/each}
+              </select>
             </div>
             <div class="form-control w-30 ml-3 mr-10">
               <label class="label">
@@ -1136,8 +1185,6 @@ function handleFontSelection(elementId, value) {
                 on:input={() => handleMarginBottom("job-type", marginBottom)}
               />
             </div>
-
-
           {:else if resumeFields.job_date}
             <div id="em-div">
               <em>Job Date</em>
@@ -1147,11 +1194,15 @@ function handleFontSelection(elementId, value) {
               <label class="label">
                 <span class="label-text">Font</span>
               </label>
-                <select class="select select-secondary w-full max-w-xs" bind:value={selectedFont} on:change={() => handleFontSelection("job-date", selectedFont)}>
-                  {#each Object.keys(fontFamily) as font}
+              <select
+                class="select select-secondary w-full max-w-xs"
+                bind:value={selectedFont}
+                on:change={() => handleFontSelection("job-date", selectedFont)}
+              >
+                {#each Object.keys(fontFamily) as font}
                   <option value={fontFamily[font]}>{fontFamily[font]}</option>
-                  {/each}
-                </select>
+                {/each}
+              </select>
             </div>
             <div class="form-control w-30 ml-3 mr-10">
               <label class="label">
@@ -1205,7 +1256,6 @@ function handleFontSelection(elementId, value) {
                 on:input={() => handleMarginBottom("job-date", marginBottom)}
               />
             </div>
-
           {:else if resumeFields.job_tech}
             <div id="em-div">
               <em>Job Technology</em>
@@ -1215,11 +1265,16 @@ function handleFontSelection(elementId, value) {
               <label class="label">
                 <span class="label-text">Font</span>
               </label>
-                <select class="select select-secondary w-full max-w-xs" bind:value={selectedFont} on:change={() => handleFontSelection("tech_stack", selectedFont)}>
-                  {#each Object.keys(fontFamily) as font}
+              <select
+                class="select select-secondary w-full max-w-xs"
+                bind:value={selectedFont}
+                on:change={() =>
+                  handleFontSelection("tech_stack", selectedFont)}
+              >
+                {#each Object.keys(fontFamily) as font}
                   <option value={fontFamily[font]}>{fontFamily[font]}</option>
-                  {/each}
-                </select>
+                {/each}
+              </select>
             </div>
             <div class="form-control w-30 ml-3 mr-10">
               <label class="label">
@@ -1273,8 +1328,6 @@ function handleFontSelection(elementId, value) {
                 on:input={() => handleMarginBottom("tech_stack", marginBottom)}
               />
             </div>
-
-
           {:else if resumeFields.job_description}
             <div id="em-div">
               <em>Job Description</em>
@@ -1284,11 +1337,16 @@ function handleFontSelection(elementId, value) {
               <label class="label">
                 <span class="label-text">Font</span>
               </label>
-                <select class="select select-secondary w-full max-w-xs" bind:value={selectedFont} on:change={() => handleFontSelection("job-description", selectedFont)}>
-                  {#each Object.keys(fontFamily) as font}
+              <select
+                class="select select-secondary w-full max-w-xs"
+                bind:value={selectedFont}
+                on:change={() =>
+                  handleFontSelection("job-description", selectedFont)}
+              >
+                {#each Object.keys(fontFamily) as font}
                   <option value={fontFamily[font]}>{fontFamily[font]}</option>
-                  {/each}
-                </select>
+                {/each}
+              </select>
             </div>
             <div class="form-control w-30 ml-3 mr-10">
               <label class="label">
@@ -1339,7 +1397,8 @@ function handleFontSelection(elementId, value) {
                 max="30"
                 bind:value={marginBottom}
                 class="range"
-                on:input={() => handleMarginBottom("job-description", marginBottom)}
+                on:input={() =>
+                  handleMarginBottom("job-description", marginBottom)}
               />
             </div>
           {:else}
@@ -1356,6 +1415,9 @@ function handleFontSelection(elementId, value) {
           >
             {helper["project"]}
           </h1>
+          <div id="em-div">
+            <em>You need to add projects first to edit them.</em>
+          </div>
           {#if resumeFields.project_title}
             <div id="em-div">
               <em>Project Title</em>
@@ -1365,11 +1427,16 @@ function handleFontSelection(elementId, value) {
               <label class="label">
                 <span class="label-text">Font</span>
               </label>
-                <select class="select select-secondary w-full max-w-xs" bind:value={selectedFont} on:change={() => handleFontSelection("project-title", selectedFont)}>
-                  {#each Object.keys(fontFamily) as font}
+              <select
+                class="select select-secondary w-full max-w-xs"
+                bind:value={selectedFont}
+                on:change={() =>
+                  handleFontSelection("project-title", selectedFont)}
+              >
+                {#each Object.keys(fontFamily) as font}
                   <option value={fontFamily[font]}>{fontFamily[font]}</option>
-                  {/each}
-                </select>
+                {/each}
+              </select>
             </div>
             <div class="form-control w-30 ml-3 mr-10">
               <label class="label">
@@ -1420,10 +1487,10 @@ function handleFontSelection(elementId, value) {
                 max="30"
                 bind:value={marginBottom}
                 class="range"
-                on:input={() => handleMarginBottom("project-title", marginBottom)}
+                on:input={() =>
+                  handleMarginBottom("project-title", marginBottom)}
               />
             </div>
-
           {:else if resumeFields.project_date}
             <div id="em-div">
               <em>Project Date</em>
@@ -1433,11 +1500,16 @@ function handleFontSelection(elementId, value) {
               <label class="label">
                 <span class="label-text">Font</span>
               </label>
-                <select class="select select-secondary w-full max-w-xs" bind:value={selectedFont} on:change={() => handleFontSelection("project-date", selectedFont)}>
-                  {#each Object.keys(fontFamily) as font}
+              <select
+                class="select select-secondary w-full max-w-xs"
+                bind:value={selectedFont}
+                on:change={() =>
+                  handleFontSelection("project-date", selectedFont)}
+              >
+                {#each Object.keys(fontFamily) as font}
                   <option value={fontFamily[font]}>{fontFamily[font]}</option>
-                  {/each}
-                </select>
+                {/each}
+              </select>
             </div>
             <div class="form-control w-30 ml-3 mr-10">
               <label class="label">
@@ -1488,10 +1560,10 @@ function handleFontSelection(elementId, value) {
                 max="30"
                 bind:value={marginBottom}
                 class="range"
-                on:input={() => handleMarginBottom("project-date", marginBottom)}
+                on:input={() =>
+                  handleMarginBottom("project-date", marginBottom)}
               />
             </div>
-
           {:else if resumeFields.project_date}
             <div id="em-div">
               <em>Project Date</em>
@@ -1501,11 +1573,16 @@ function handleFontSelection(elementId, value) {
               <label class="label">
                 <span class="label-text">Font</span>
               </label>
-                <select class="select select-secondary w-full max-w-xs" bind:value={selectedFont} on:change={() => handleFontSelection("project-date", selectedFont)}>
-                  {#each Object.keys(fontFamily) as font}
+              <select
+                class="select select-secondary w-full max-w-xs"
+                bind:value={selectedFont}
+                on:change={() =>
+                  handleFontSelection("project-date", selectedFont)}
+              >
+                {#each Object.keys(fontFamily) as font}
                   <option value={fontFamily[font]}>{fontFamily[font]}</option>
-                  {/each}
-                </select>
+                {/each}
+              </select>
             </div>
             <div class="form-control w-30 ml-3 mr-10">
               <label class="label">
@@ -1556,150 +1633,158 @@ function handleFontSelection(elementId, value) {
                 max="30"
                 bind:value={marginBottom}
                 class="range"
-                on:input={() => handleMarginBottom("project-date", marginBottom)}
+                on:input={() =>
+                  handleMarginBottom("project-date", marginBottom)}
               />
             </div>
-
           {:else if resumeFields.project_link}
+            <div id="em-div">
+              <em>Project Link</em>
+            </div>
 
-          <div id="em-div">
-            <em>Project link</em>
-          </div>
-
-          <div class="form-control w-30 ml-3 mr-10">
-            <label class="label">
-              <span class="label-text">Font</span>
-            </label>
-              <select class="select select-secondary w-full max-w-xs" bind:value={selectedFont} on:change={() => handleFontSelection("project-link", selectedFont)}>
+            <div class="form-control w-30 ml-3 mr-10">
+              <label class="label">
+                <span class="label-text">Font</span>
+              </label>
+              <select
+                class="select select-secondary w-full max-w-xs"
+                bind:value={selectedFont}
+                on:change={() =>
+                  handleFontSelection("project-link", selectedFont)}
+              >
                 {#each Object.keys(fontFamily) as font}
-                <option value={fontFamily[font]}>{fontFamily[font]}</option>
+                  <option value={fontFamily[font]}>{fontFamily[font]}</option>
                 {/each}
               </select>
-          </div>
-          <div class="form-control w-30 ml-3 mr-10">
-            <label class="label">
-              <span class="label-text">Font Size</span>
-            </label>
-            <input
-              type="range"
-              min="12"
-              max="20"
-              bind:value={fontSize}
-              class="range"
-              on:input={() => handleFontSize("project-link", fontSize)}
-            />
-          </div>
-          <div class="form-control w-30 ml-3 mr-10">
-            <label class="label">
-              <span class="label-text">Font Weight</span>
-            </label>
-            <input
-              type="range"
-              min="100"
-              max="900"
-              bind:value={defaultWeight}
-              class="range"
-              on:input={() => handleWeight("project-link", defaultWeight)}
-            />
-          </div>
-          <div class="form-control w-30 ml-3 mr-10">
-            <label class="label">
-              <span class="label-text">Margin Top</span>
-            </label>
-            <input
-              type="range"
-              min="0"
-              max="30"
-              bind:value={marginTop}
-              class="range"
-              on:input={() => handleMarginTop("project-link", marginTop)}
-            />
-          </div>
-          <div class="form-control w-30 ml-3 mr-10">
-            <label class="label">
-              <span class="label-text">Margin Bottom</span>
-            </label>
-            <input
-              type="range"
-              min="0"
-              max="30"
-              bind:value={marginBottom}
-              class="range"
-              on:input={() => handleMarginBottom("project-link", marginBottom)}
-            />
-          </div>
-
+            </div>
+            <div class="form-control w-30 ml-3 mr-10">
+              <label class="label">
+                <span class="label-text">Font Size</span>
+              </label>
+              <input
+                type="range"
+                min="12"
+                max="20"
+                bind:value={fontSize}
+                class="range"
+                on:input={() => handleFontSize("project-link", fontSize)}
+              />
+            </div>
+            <div class="form-control w-30 ml-3 mr-10">
+              <label class="label">
+                <span class="label-text">Font Weight</span>
+              </label>
+              <input
+                type="range"
+                min="100"
+                max="900"
+                bind:value={defaultWeight}
+                class="range"
+                on:input={() => handleWeight("project-link", defaultWeight)}
+              />
+            </div>
+            <div class="form-control w-30 ml-3 mr-10">
+              <label class="label">
+                <span class="label-text">Margin Top</span>
+              </label>
+              <input
+                type="range"
+                min="0"
+                max="30"
+                bind:value={marginTop}
+                class="range"
+                on:input={() => handleMarginTop("project-link", marginTop)}
+              />
+            </div>
+            <div class="form-control w-30 ml-3 mr-10">
+              <label class="label">
+                <span class="label-text">Margin Bottom</span>
+              </label>
+              <input
+                type="range"
+                min="0"
+                max="30"
+                bind:value={marginBottom}
+                class="range"
+                on:input={() =>
+                  handleMarginBottom("project-link", marginBottom)}
+              />
+            </div>
           {:else if resumeFields.project_tech}
+            <div id="em-div">
+              <em>Project Tech Stack</em>
+            </div>
 
-
-          <div id="em-div">
-            <em>Project Tech Stack</em>
-          </div>
-
-          <div class="form-control w-30 ml-3 mr-10">
-            <label class="label">
-              <span class="label-text">Font</span>
-            </label>
-              <select class="select select-secondary w-full max-w-xs" bind:value={selectedFont} on:change={() => handleFontSelection("project_tech_stack", selectedFont)}>
+            <div class="form-control w-30 ml-3 mr-10">
+              <label class="label">
+                <span class="label-text">Font</span>
+              </label>
+              <select
+                class="select select-secondary w-full max-w-xs"
+                bind:value={selectedFont}
+                on:change={() =>
+                  handleFontSelection("project_tech_stack", selectedFont)}
+              >
                 {#each Object.keys(fontFamily) as font}
-                <option value={fontFamily[font]}>{fontFamily[font]}</option>
+                  <option value={fontFamily[font]}>{fontFamily[font]}</option>
                 {/each}
               </select>
-          </div>
-          <div class="form-control w-30 ml-3 mr-10">
-            <label class="label">
-              <span class="label-text">Font Size</span>
-            </label>
-            <input
-              type="range"
-              min="12"
-              max="20"
-              bind:value={fontSize}
-              class="range"
-              on:input={() => handleFontSize("project_tech_stack", fontSize)}
-            />
-          </div>
-          <div class="form-control w-30 ml-3 mr-10">
-            <label class="label">
-              <span class="label-text">Font Weight</span>
-            </label>
-            <input
-              type="range"
-              min="100"
-              max="900"
-              bind:value={defaultWeight}
-              class="range"
-              on:input={() => handleWeight("project_tech_stack", defaultWeight)}
-            />
-          </div>
-          <div class="form-control w-30 ml-3 mr-10">
-            <label class="label">
-              <span class="label-text">Margin Top</span>
-            </label>
-            <input
-              type="range"
-              min="0"
-              max="30"
-              bind:value={marginTop}
-              class="range"
-              on:input={() => handleMarginTop("project_tech_stack", marginTop)}
-            />
-          </div>
-          <div class="form-control w-30 ml-3 mr-10">
-            <label class="label">
-              <span class="label-text">Margin Bottom</span>
-            </label>
-            <input
-              type="range"
-              min="0"
-              max="30"
-              bind:value={marginBottom}
-              class="range"
-              on:input={() => handleMarginBottom("project_tech_stack", marginBottom)}
-            />
-          </div>
-
-
+            </div>
+            <div class="form-control w-30 ml-3 mr-10">
+              <label class="label">
+                <span class="label-text">Font Size</span>
+              </label>
+              <input
+                type="range"
+                min="12"
+                max="20"
+                bind:value={fontSize}
+                class="range"
+                on:input={() => handleFontSize("project_tech_stack", fontSize)}
+              />
+            </div>
+            <div class="form-control w-30 ml-3 mr-10">
+              <label class="label">
+                <span class="label-text">Font Weight</span>
+              </label>
+              <input
+                type="range"
+                min="100"
+                max="900"
+                bind:value={defaultWeight}
+                class="range"
+                on:input={() =>
+                  handleWeight("project_tech_stack", defaultWeight)}
+              />
+            </div>
+            <div class="form-control w-30 ml-3 mr-10">
+              <label class="label">
+                <span class="label-text">Margin Top</span>
+              </label>
+              <input
+                type="range"
+                min="0"
+                max="30"
+                bind:value={marginTop}
+                class="range"
+                on:input={() =>
+                  handleMarginTop("project_tech_stack", marginTop)}
+              />
+            </div>
+            <div class="form-control w-30 ml-3 mr-10">
+              <label class="label">
+                <span class="label-text">Margin Bottom</span>
+              </label>
+              <input
+                type="range"
+                min="0"
+                max="30"
+                bind:value={marginBottom}
+                class="range"
+                on:input={() =>
+                  handleMarginBottom("project_tech_stack", marginBottom)}
+              />
+            </div>
           {:else if resumeFields.project_description}
             <div id="em-div">
               <em>Project description</em>
@@ -1709,11 +1794,16 @@ function handleFontSelection(elementId, value) {
               <label class="label">
                 <span class="label-text">Font</span>
               </label>
-                <select class="select select-secondary w-full max-w-xs" bind:value={selectedFont} on:change={() => handleFontSelection("project-description", selectedFont)}>
-                  {#each Object.keys(fontFamily) as font}
+              <select
+                class="select select-secondary w-full max-w-xs"
+                bind:value={selectedFont}
+                on:change={() =>
+                  handleFontSelection("project-description", selectedFont)}
+              >
+                {#each Object.keys(fontFamily) as font}
                   <option value={fontFamily[font]}>{fontFamily[font]}</option>
-                  {/each}
-                </select>
+                {/each}
+              </select>
             </div>
             <div class="form-control w-30 ml-3 mr-10">
               <label class="label">
@@ -1738,7 +1828,8 @@ function handleFontSelection(elementId, value) {
                 max="900"
                 bind:value={defaultWeight}
                 class="range"
-                on:input={() => handleWeight("project-description", defaultWeight)}
+                on:input={() =>
+                  handleWeight("project-description", defaultWeight)}
               />
             </div>
             <div class="form-control w-30 ml-3 mr-10">
@@ -1751,7 +1842,8 @@ function handleFontSelection(elementId, value) {
                 max="30"
                 bind:value={marginTop}
                 class="range"
-                on:input={() => handleMarginTop("project-description", marginTop)}
+                on:input={() =>
+                  handleMarginTop("project-description", marginTop)}
               />
             </div>
             <div class="form-control w-30 ml-3 mr-10">
@@ -1764,14 +1856,13 @@ function handleFontSelection(elementId, value) {
                 max="30"
                 bind:value={marginBottom}
                 class="range"
-                on:input={() => handleMarginBottom("project-description", marginBottom)}
+                on:input={() =>
+                  handleMarginBottom("project-description", marginBottom)}
               />
             </div>
-            
-
           {:else}
             <div id="em-div">
-              <em>ADD GOOD EXPERIENCE DESCRIPTION</em>
+              <em>Start filling the information to unlock editing section</em>
             </div>
           {/if}
         {/if}
@@ -1792,11 +1883,15 @@ function handleFontSelection(elementId, value) {
               <label class="label">
                 <span class="label-text">Font</span>
               </label>
-                <select class="select select-secondary w-full max-w-xs" bind:value={selectedFont} on:change={() => handleFontSelection("edu-title", selectedFont)}>
-                  {#each Object.keys(fontFamily) as font}
+              <select
+                class="select select-secondary w-full max-w-xs"
+                bind:value={selectedFont}
+                on:change={() => handleFontSelection("edu-title", selectedFont)}
+              >
+                {#each Object.keys(fontFamily) as font}
                   <option value={fontFamily[font]}>{fontFamily[font]}</option>
-                  {/each}
-                </select>
+                {/each}
+              </select>
             </div>
             <div class="form-control w-30 ml-3 mr-10">
               <label class="label">
@@ -1850,7 +1945,6 @@ function handleFontSelection(elementId, value) {
                 on:input={() => handleMarginBottom("edu-title", marginBottom)}
               />
             </div>
-
           {:else if resumeFields.education_uni_name}
             <div id="em-div">
               <em>University Name</em>
@@ -1860,11 +1954,15 @@ function handleFontSelection(elementId, value) {
               <label class="label">
                 <span class="label-text">Font</span>
               </label>
-                <select class="select select-secondary w-full max-w-xs" bind:value={selectedFont} on:change={() => handleFontSelection("edu-uni", selectedFont)}>
-                  {#each Object.keys(fontFamily) as font}
+              <select
+                class="select select-secondary w-full max-w-xs"
+                bind:value={selectedFont}
+                on:change={() => handleFontSelection("edu-uni", selectedFont)}
+              >
+                {#each Object.keys(fontFamily) as font}
                   <option value={fontFamily[font]}>{fontFamily[font]}</option>
-                  {/each}
-                </select>
+                {/each}
+              </select>
             </div>
             <div class="form-control w-30 ml-3 mr-10">
               <label class="label">
@@ -1918,21 +2016,24 @@ function handleFontSelection(elementId, value) {
                 on:input={() => handleMarginBottom("edu-title", marginBottom)}
               />
             </div>
-
           {:else if resumeFields.education_place}
             <div id="em-div">
               <em>Education Place</em>
             </div>
 
-          <div class="form-control w-30 ml-3 mr-10">
+            <div class="form-control w-30 ml-3 mr-10">
               <label class="label">
                 <span class="label-text">Font</span>
               </label>
-                <select class="select select-secondary w-full max-w-xs" bind:value={selectedFont} on:change={() => handleFontSelection("edu-place", selectedFont)}>
-                  {#each Object.keys(fontFamily) as font}
+              <select
+                class="select select-secondary w-full max-w-xs"
+                bind:value={selectedFont}
+                on:change={() => handleFontSelection("edu-place", selectedFont)}
+              >
+                {#each Object.keys(fontFamily) as font}
                   <option value={fontFamily[font]}>{fontFamily[font]}</option>
-                  {/each}
-                </select>
+                {/each}
+              </select>
             </div>
             <div class="form-control w-30 ml-3 mr-10">
               <label class="label">
@@ -1986,7 +2087,6 @@ function handleFontSelection(elementId, value) {
                 on:input={() => handleMarginBottom("edu-place", marginBottom)}
               />
             </div>
-
           {:else}
             <div id="em-div">
               <em>Add good education details</em>
@@ -2023,10 +2123,10 @@ function handleFontSelection(elementId, value) {
 </div>
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+  @import url("https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
 
   #header-name {
     font-weight: lighter;
