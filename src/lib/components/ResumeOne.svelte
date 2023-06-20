@@ -47,7 +47,36 @@
     education: "Education",
   };
 
-  //   accordion checker
+  // to change the font-weight
+  let defaultWeight = 0;
+  function handleWeight(elementId, value) {
+    const textElement = document.getElementById(elementId);
+    textElement.style.fontWeight = `${value}`;
+  }
+
+  // to change the fontSize
+  let fontSize = 0;
+  function handleFontSize(elementId, value) {
+    const textElement = document.getElementById(elementId);
+    textElement.style.fontSize = `${value}px`;
+  }
+  let fontColor = "";
+  function handleColorChange(elementId, value) {
+    const textElement = document.getElementById(elementId);
+    textElement.style.color = `${value}`;
+  }
+
+  let marginTop = 0;
+  function handleMarginTop(elementId, value) {
+    const textElement = document.getElementById(elementId);
+    textElement.style.marginTop = `${value}px`;
+  }
+
+  let marginBottom = 0;
+  function handleMarginBottom(elementId, value) {
+    const textElement = document.getElementById(elementId);
+    textElement.style.marginBottom = `${value}px`;
+  }
 
   // SECTIONS
   let sections = {
@@ -189,6 +218,7 @@
     summary_description = replaceAsterisks(summary_description);
     skills = replaceAsterisks(skills);
     skills = titleCase(skills);
+    header.social = replaceAsterisks(header.social);
   }
 </script>
 
@@ -481,10 +511,17 @@
     id="page"
   >
     <div class="resumeBg" id="resumeBg">
-      <div class="text-center mt-4 text-[40px] text-black font-bold">
+      <div
+        class="text-center mt-4 text-[40px] text-black font-bold"
+        id="header-name"
+      >
         {header.name}
       </div>
-      <p class="text-center text-xs" style="margin: -4px 0 4px 0;">
+      <p
+        class="text-center text-xs"
+        style="margin: -4px 0 4px 0;"
+        id="header-role"
+      >
         {header.role}
       </p>
       <div class="text-center" id="socials">
@@ -570,14 +607,176 @@
             <div id="em-div">
               <em>Pro tip: You can change the color and size of your name.</em>
             </div>
-            <p class="ml-5 mt-3"><b>Name:</b> {header.name}</p>
+            <br />
+            <div class="form-control w-30 ml-3 mr-10">
+              <label class="label">
+                <span class="label-text">Font Size</span>
+              </label>
+              <input
+                type="range"
+                min="20"
+                max="70"
+                bind:value={fontSize}
+                class="range"
+                on:input={() => handleFontSize("header-name", fontSize)}
+              />
+            </div>
+            <div class="form-control w-30 ml-3 mr-10">
+              <label class="label">
+                <span class="label-text">Font Weight</span>
+              </label>
+              <input
+                type="range"
+                min="100"
+                max="900"
+                bind:value={defaultWeight}
+                class="range"
+                on:input={() => handleWeight("header-name", defaultWeight)}
+              />
+            </div>
+            <div class="form-control w-30 ml-3 mr-10">
+              <label class="label">
+                <span class="label-text">Font Color</span>
+              </label>
+              <input
+                type="color"
+                bind:value={fontColor}
+                class="range"
+                on:input={() => handleColorChange("header-name", fontColor)}
+              />
+            </div>
           {:else if resumeFields.role}
             <p class="ml-5 mt-3"><b>Role:</b> {header.role}</p>
+            <div class="form-control w-30 ml-3 mr-10">
+              <label class="label">
+                <span class="label-text">Font Size</span>
+              </label>
+              <input
+                type="range"
+                min="12"
+                max="40"
+                bind:value={fontSize}
+                class="range"
+                on:input={() => handleFontSize("header-role", fontSize)}
+              />
+            </div>
+            <div class="form-control w-30 ml-3 mr-10">
+              <label class="label">
+                <span class="label-text">Font Weight</span>
+              </label>
+              <input
+                type="range"
+                min="100"
+                max="900"
+                bind:value={defaultWeight}
+                class="range"
+                on:input={() => handleWeight("header-role", defaultWeight)}
+              />
+            </div>
+            <div class="form-control w-30 ml-3 mr-10">
+              <label class="label">
+                <span class="label-text">Font Color</span>
+              </label>
+              <input
+                type="color"
+                bind:value={fontColor}
+                class="range"
+                on:input={() => handleColorChange("header-role", fontColor)}
+              />
+            </div>
+            <div class="form-control w-30 ml-3 mr-10">
+              <label class="label">
+                <span class="label-text">Margin Top</span>
+              </label>
+              <input
+                type="range"
+                min="0"
+                max="30"
+                bind:value={marginTop}
+                class="range"
+                on:input={() => handleMarginTop("header-role", marginTop)}
+              />
+            </div>
+            <div class="form-control w-30 ml-3 mr-10">
+              <label class="label">
+                <span class="label-text">Margin Bottom</span>
+              </label>
+              <input
+                type="range"
+                min="0"
+                max="30"
+                bind:value={marginBottom}
+                class="range"
+                on:input={() => handleMarginBottom("header-role", marginBottom)}
+              />
+            </div>
           {:else if resumeFields.socials}
-            <p class="ml-5 mt-3"><b>Socials:</b> {header.social}</p>
+          <div class="form-control w-30 ml-3 mr-10">
+            <label class="label">
+              <span class="label-text">Font Size</span>
+            </label>
+            <input
+              type="range"
+              min="12"
+              max="40"
+              bind:value={fontSize}
+              class="range"
+              on:input={() => handleFontSize("socials", fontSize)}
+            />
+          </div>
+          <div class="form-control w-30 ml-3 mr-10">
+            <label class="label">
+              <span class="label-text">Font Weight</span>
+            </label>
+            <input
+              type="range"
+              min="100"
+              max="900"
+              bind:value={defaultWeight}
+              class="range"
+              on:input={() => handleWeight("socials", defaultWeight)}
+            />
+          </div>
+          <div class="form-control w-30 ml-3 mr-10">
+            <label class="label">
+              <span class="label-text">Font Color</span>
+            </label>
+            <input
+              type="color"
+              bind:value={fontColor}
+              class="range"
+              on:input={() => handleColorChange("socials", fontColor)}
+            />
+          </div>
+          <div class="form-control w-30 ml-3 mr-10">
+            <label class="label">
+              <span class="label-text">Margin Top</span>
+            </label>
+            <input
+              type="range"
+              min="0"
+              max="30"
+              bind:value={marginTop}
+              class="range"
+              on:input={() => handleMarginTop("socials", marginTop)}
+            />
+          </div>
+          <div class="form-control w-30 ml-3 mr-10">
+            <label class="label">
+              <span class="label-text">Margin Bottom</span>
+            </label>
+            <input
+              type="range"
+              min="0"
+              max="30"
+              bind:value={marginBottom}
+              class="range"
+              on:input={() => handleMarginBottom("socials", marginBottom)}
+            />
+          </div>
           {:else}
             <div id="em-div">
-              <em>Add Some GOOD HEADERS</em>
+              <em>Start filling details so that you can use editing tools</em>
             </div>
           {/if}
         {/if}
@@ -749,6 +948,9 @@
 </div>
 
 <style>
+  #header-name {
+    font-weight: lighter;
+  }
   #btm-nav {
     width: 10%;
     display: flex;
