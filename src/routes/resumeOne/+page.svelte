@@ -2120,10 +2120,7 @@
   </div>
   
   <style>
-    @import url("https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap");
-    @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
-    @import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
-    @import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+
   
     #header-name {
       font-weight: lighter;
