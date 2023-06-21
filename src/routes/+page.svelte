@@ -1,9 +1,10 @@
-
 <script>
   import "$lib/global.css";
   import Footer from "../lib/components/Footer.svelte";
-  import ResumeOne from "../lib/components/ResumeOne.svelte";
+  // import ResumeOne from "../lib/components/ResumeOne.svelte";
 </script>
-<ResumeOne />
-<br><br><br>
+
+<!-- <ResumeOne /> -->
+<a href="/resumeOne">This will take you to resumene</a>
+<br /><br /><br />
 <Footer />
