@@ -35,7 +35,7 @@
           /></svg
         ></a
       >
-      <a href="https://github.com/ArshErgon" target="_blank">
+      <a href="https://github.com/ArshErgon/ResumeWizard" target="_blank">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
