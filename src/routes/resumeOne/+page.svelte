@@ -3,7 +3,7 @@
   
     import { titleCase, replaceAsterisks } from "./helper.js";
     import { onMount } from "svelte";
-  
+    import { fly, blur } from 'svelte/transition';
     let header = {
       name: "John Bose",
       role: "Software Developer",
@@ -236,7 +236,7 @@
     }
   </script>
   
-  <div class="flex flex-col w-full lg:flex-row" id="main_view">
+  <div in:fly="{{ y: 200, duration: 2000 }}" out:blur class="flex flex-col w-full lg:flex-row" id="main_view">
     <div
       class="grid flex-grow h-100 card bg-base-300 rounded-box"
       id="leftSideBar"
@@ -545,13 +545,13 @@
         >
           {header.name}
         </div>
-        <p
+        <div
           class="text-center text-xs"
-          style="margin: -4px 0 4px 0;"
+          style="margin: -5px 0 5px 0;"
           id="header-role"
         >
           {header.role}
-        </p>
+      </div>
         <div class="text-center" id="socials">
           {header.social}
         </div>
@@ -959,7 +959,7 @@
             >
               {helper["skill"]}
             </h1>
-            {#if resumeFields.skills};
+            {#if resumeFields.skills}
             <div id="em-div">
               <em>Skills</em>
             </div>
@@ -1043,9 +1043,7 @@
             >
               {helper["experience"]}
             </h1>
-            <div id="em-div">
-              <em>You need to add experience first to edit them.</em>
-            </div>
+            
             {#if resumeFields.job_title}
               <div id="em-div">
                 <em>Job Title</em>
@@ -1332,7 +1330,7 @@
               </div>
             {:else if resumeFields.job_description}
               <div id="em-div">
-                <em>De`scription</em>
+                <em>Job Description</em>
               </div>
   
               <div class="form-control w-30 ml-3 mr-10">
@@ -1403,9 +1401,9 @@
                     handleMarginBottom("job-description", marginBottom)}
                 />
               </div>
-            {:else}
+              {:else}
               <div id="em-div">
-                <em>Add SOME GOOD JOB TITLE</em>
+                <em>You need to add experience first to edit them.</em>
               </div>
             {/if}
           {/if}
@@ -1417,9 +1415,6 @@
             >
               {helper["project"]}
             </h1>
-            <div id="em-div">
-              <em>You need to add projects first to edit them.</em>
-            </div>
             {#if resumeFields.project_title}
               <div id="em-div">
                 <em>Project Title</em>
