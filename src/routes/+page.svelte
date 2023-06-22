@@ -33,9 +33,9 @@
   Stand out with our resume templates free online resume builder.
 </div>
 <div class="text-center ml-80 mr-80">More Resume's templates are coming soon.</div>
-<div class="text-center mt-20 text-[35px] font-[600]">
+<!-- <div class="text-center mt-20 text-[35px] font-[600]">
   How to use the ResumeWizard
-</div>
+</div> -->
   <div class="text-center font-[600] text-[35px] pt-10 pb-5">
     Some questions.
   </div>
