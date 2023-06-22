@@ -176,6 +176,7 @@
       newJob.type = titleCase(newJob.type);
       newJob.date = titleCase(newJob.date);
       newJob.description = replaceAsterisks(newJob.description);
+      newJob.tech = replaceAsterisks(newJob.tech);
       work_experience_list = [...work_experience_list, newJob];
       if (!hasEditWork) {
         work_experience_list.shift();

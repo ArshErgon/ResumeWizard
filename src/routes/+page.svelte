@@ -1,4 +1,13 @@
 <script>
+	import Mobile from './../lib/components/Mobile.svelte';
+	import { onMount } from 'svelte';
+  let isMobile = false;
+  onMount(() => {
+  // Check if the user agent indicates a mobile device
+  isMobile = /Mobile|iP(hone|od|ad)|Android|BlackBerry|IEMobile/.test(
+    navigator.userAgent
+  );
+});
 	import Navbar from './../lib/components/Navbar.svelte';
 	import { slide } from 'svelte/transition';
   import "$lib/global.css";
@@ -6,7 +15,9 @@
 </script>
 
 <!-- <ResumeOne /> -->
-
+{#if isMobile} 
+<Mobile />
+{:else}
 <main out:slide>
   <Navbar/>
 <div class="text-center mt-10 text-[80px] font-[900] text-white">
@@ -16,7 +27,8 @@
 <div class="text-center text-lg">Showcase yourself and your achievements with our ATS proof online resume generator.</div>
 <div class="text-center mt-3"><a href="/resumeOne"><button class="btn btn-secondary">Create your resume</button></a></div>
 <br>
-<div style="background: red; width: 900px; height: 500px;margin: 0 auto;"></div>
+<div style="margin: 0 auto;"><img src="
+  https://github.com/ArshErgon/ResumeWizard/assets/40994679/1a0248f7-7719-4a88-8f5a-f23f29690b1b" alt="project-gif"></div>
 <div class="mt-20 text-center font-[700] text-[36px]">
   Stand out with our resume templates free online resume builder.
 </div>
@@ -24,8 +36,7 @@
 <div class="text-center mt-20 text-[35px] font-[600]">
   How to use the ResumeWizard
 </div>
-<section style="background: #e8e8e8e8;">
-  <div class="text-center text-[#242424] font-[600] text-[35px] pt-10 pb-5">
+  <div class="text-center font-[600] text-[35px] pt-10 pb-5">
     Some questions.
   </div>
   <div class="sm:container md:mx-auto pb-10" style="margin: 0px auto; width: 50%;">
@@ -59,11 +70,10 @@
       </div>
     </div>
   </div>
-</section>
 <br /><br /><br />
 <Footer />
 </main>
-
+{/if}
 <style>
 span {
   background-color: #f3ec78;
@@ -73,6 +83,12 @@ span {
     -moz-background-clip: text;
     -webkit-text-fill-color: transparent; 
     -moz-text-fill-color: transparent;
+}
+
+img {
+  margin: 0px auto;
+  /* width: 30%; */
 
 }
+
 </style>
